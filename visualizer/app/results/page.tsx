@@ -8,6 +8,21 @@ import { MetricsCard } from "@/components/MetricsCard";
 import { ConfusionMatrix } from "@/components/ConfusionMatrix";
 import { BarChart } from "@/components/BarChart";
 
+const SYSTEM_PROMPT = `You are a child safety classifier. Analyze the following conversation between an adult and a child for grooming indicators.
+
+Grooming stages to check for:
+- age_probing: asking about the child's age, birthday, grade level
+- trust_building: complimenting appearance/maturity, expressing love, giving gifts
+- isolation: asking if child is alone, encouraging secrecy
+- location_probing: asking where someone lives, address, directions
+- contact_escalation: asking to move to phone/Snapchat/Kik/video call
+- explicit_solicitation: sexual conversation, requesting images
+- meeting_requests: trying to arrange an in-person meeting
+- coercion_threats: threatening to share images, blackmail, pressuring
+
+Respond ONLY with JSON (no markdown, no explanation outside JSON):
+{"is_grooming": boolean, "stages": ["stage1", "stage2"], "severity": 0.0-1.0, "explanation": "brief reason"}`;
+
 function RunDetail() {
   const searchParams = useSearchParams();
   const runId = searchParams.get("id");
@@ -57,6 +72,7 @@ function RunDetail() {
   }
 
   const [expandedPreds, setExpandedPreds] = useState<Set<string>>(new Set());
+  const [showPrompt, setShowPrompt] = useState(false);
   const toggleExpand = (id: string) =>
     setExpandedPreds((prev) => {
       const next = new Set(prev);
@@ -93,6 +109,19 @@ function RunDetail() {
         <p className="mt-1 text-muted-foreground">
           {new Date(run.timestamp).toLocaleString()}
         </p>
+        <div className="mt-3">
+          <button
+            onClick={() => setShowPrompt((v) => !v)}
+            className="text-xs font-medium text-muted-foreground hover:text-primary hover:underline"
+          >
+            {showPrompt ? "▲ Hide system prompt" : "▼ View system prompt"}
+          </button>
+          {showPrompt && (
+            <pre className="mt-2 overflow-x-auto rounded border bg-muted p-4 text-xs leading-relaxed text-foreground whitespace-pre-wrap">
+              {SYSTEM_PROMPT}
+            </pre>
+          )}
+        </div>
       </div>
 
       {/* Failure reason banner */}
@@ -270,7 +299,16 @@ function RunDetail() {
           <div className="space-y-3">
             {incorrect.slice(0, 20).map((p) => {
               const expanded = expandedPreds.has(p.test_id);
-              const isLong = (p.explanation?.length ?? 0) > PREVIEW_LEN;
+              const modelOutput = JSON.stringify(
+                {
+                  is_grooming: p.predicted,
+                  stages: p.stages_predicted,
+                  severity: parseFloat(p.score.toFixed(3)),
+                  ...(p.explanation ? { explanation: p.explanation } : {}),
+                },
+                null,
+                2
+              );
               return (
                 <div key={p.test_id} className="rounded-lg border border-destructive/20 bg-destructive/5 p-4">
                   <div className="flex items-center justify-between">
@@ -300,34 +338,35 @@ function RunDetail() {
                   <div className="mt-1 text-xs text-muted-foreground">
                     Score: {p.score.toFixed(3)} | Latency: {p.latency_ms.toFixed(0)}ms
                   </div>
-                  {p.explanation && (
-                    <div className="mt-2 rounded bg-muted p-3 text-sm leading-relaxed">
-                      <span className="font-medium">Model reasoning: </span>
-                      {isLong && !expanded ? (
-                        <>
-                          {p.explanation.slice(0, PREVIEW_LEN)}&hellip;{" "}
-                          <button
-                            onClick={() => toggleExpand(p.test_id)}
-                            className="font-medium text-primary hover:underline"
-                          >
-                            Show full reasoning ▼
-                          </button>
-                        </>
-                      ) : (
-                        <>
-                          <span className="whitespace-pre-wrap">{p.explanation}</span>
-                          {isLong && (
-                            <button
-                              onClick={() => toggleExpand(p.test_id)}
-                              className="ml-2 font-medium text-primary hover:underline"
-                            >
-                              Show less ▲
-                            </button>
-                          )}
-                        </>
-                      )}
-                    </div>
-                  )}
+                  {/* Explanation preview + expand to full model output */}
+                  <div className="mt-2">
+                    {!expanded && p.explanation && (
+                      <p className="mb-1 text-sm text-muted-foreground">
+                        {p.explanation.slice(0, PREVIEW_LEN)}
+                        {p.explanation.length > PREVIEW_LEN ? "…" : ""}
+                      </p>
+                    )}
+                    {expanded ? (
+                      <>
+                        <pre className="overflow-x-auto rounded bg-gray-950 p-3 text-xs leading-relaxed text-green-300">
+                          {modelOutput}
+                        </pre>
+                        <button
+                          onClick={() => toggleExpand(p.test_id)}
+                          className="mt-1 text-xs font-medium text-primary hover:underline"
+                        >
+                          Show less ▲
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        onClick={() => toggleExpand(p.test_id)}
+                        className="text-xs font-medium text-primary hover:underline"
+                      >
+                        Show full output ▼
+                      </button>
+                    )}
+                  </div>
                 </div>
               );
             })}
@@ -343,7 +382,16 @@ function RunDetail() {
         <div className="space-y-2">
           {correct.slice(0, 10).map((p) => {
             const expanded = expandedPreds.has(p.test_id);
-            const isLong = (p.explanation?.length ?? 0) > PREVIEW_LEN;
+            const modelOutput = JSON.stringify(
+              {
+                is_grooming: p.predicted,
+                stages: p.stages_predicted,
+                severity: parseFloat(p.score.toFixed(3)),
+                ...(p.explanation ? { explanation: p.explanation } : {}),
+              },
+              null,
+              2
+            );
             return (
               <div key={p.test_id} className="rounded-lg border border-green-200 bg-green-50 p-3">
                 <div className="flex items-center justify-between">
@@ -360,33 +408,34 @@ function RunDetail() {
                     Stages: {p.stages_predicted.join(", ")}
                   </div>
                 )}
-                {p.explanation && (
-                  <div className="mt-1 text-sm text-muted-foreground">
-                    {isLong && !expanded ? (
-                      <>
-                        {p.explanation.slice(0, PREVIEW_LEN)}&hellip;{" "}
-                        <button
-                          onClick={() => toggleExpand(p.test_id)}
-                          className="font-medium text-primary hover:underline"
-                        >
-                          Show full reasoning ▼
-                        </button>
-                      </>
-                    ) : (
-                      <>
-                        <span className="whitespace-pre-wrap">{p.explanation}</span>
-                        {isLong && (
-                          <button
-                            onClick={() => toggleExpand(p.test_id)}
-                            className="ml-2 font-medium text-primary hover:underline"
-                          >
-                            Show less ▲
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </div>
-                )}
+                <div className="mt-1">
+                  {!expanded && p.explanation && (
+                    <p className="mb-0.5 text-sm text-muted-foreground">
+                      {p.explanation.slice(0, PREVIEW_LEN)}
+                      {p.explanation.length > PREVIEW_LEN ? "…" : ""}
+                    </p>
+                  )}
+                  {expanded ? (
+                    <>
+                      <pre className="overflow-x-auto rounded bg-gray-950 p-3 text-xs leading-relaxed text-green-300">
+                        {modelOutput}
+                      </pre>
+                      <button
+                        onClick={() => toggleExpand(p.test_id)}
+                        className="mt-1 text-xs font-medium text-primary hover:underline"
+                      >
+                        Show less ▲
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => toggleExpand(p.test_id)}
+                      className="text-xs font-medium text-primary hover:underline"
+                    >
+                      Show full output ▼
+                    </button>
+                  )}
+                </div>
               </div>
             );
           })}
