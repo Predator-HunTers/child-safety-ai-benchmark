@@ -1,6 +1,6 @@
 "use client";
 
-import type { BenchmarkRun } from "@/lib/types";
+import { type BenchmarkRun, detectFailureReason } from "@/lib/types";
 import { useState } from "react";
 
 type SortKey = "f1" | "precision" | "recall" | "auc" | "fpr" | "avg_latency_ms";
@@ -94,7 +94,27 @@ export function Leaderboard({
                 <td className="px-4 py-3 font-mono text-muted-foreground">
                   {i + 1}
                 </td>
-                <td className="px-4 py-3 font-medium">{run.model}</td>
+                <td className="px-4 py-3 font-medium">
+                  {run.model}
+                  {(() => {
+                    const reason = detectFailureReason(run);
+                    if (reason.type === "refused") {
+                      return (
+                        <span className="ml-2 inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800" title={reason.description}>
+                          Refused
+                        </span>
+                      );
+                    }
+                    if (reason.type === "all_errors" || reason.type === "api_error") {
+                      return (
+                        <span className="ml-2 inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800" title={reason.description}>
+                          Error
+                        </span>
+                      );
+                    }
+                    return null;
+                  })()}
+                </td>
                 {!suiteFilter && (
                   <td className="px-4 py-3">
                     <span className="rounded-full bg-muted px-2 py-0.5 text-xs">
@@ -122,7 +142,7 @@ export function Leaderboard({
                 </td>
                 <td className="px-4 py-3 text-right">
                   <a
-                    href={`/results/${run.id}`}
+                    href={`/results?id=${run.id}`}
                     className="text-primary hover:underline"
                   >
                     View

@@ -4,8 +4,10 @@ bun.lock
 
 # Build
 .next/
+out/
 dist/
 *.tsbuildinfo
+visualizer/public/data/
 
 # Environment
 .env
@@ -28,8 +30,7 @@ __pycache__/
 .DS_Store
 Thumbs.db
 
-# Benchmark output (regenerated per run)
-output/*.json
+# Benchmark output
 !output/.gitkeep
 
 # Model weights

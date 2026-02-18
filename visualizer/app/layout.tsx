@@ -17,14 +17,21 @@ export default function RootLayout({
       <body className="min-h-screen bg-background font-sans antialiased">
         <header className="border-b bg-card">
           <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-            <div>
-              <h1 className="text-xl font-bold text-foreground">
-                Child Safety Benchmark
-              </h1>
-              <p className="text-sm text-muted-foreground">
-                Predator Hunters ROM — AI Model Evaluation
-              </p>
-            </div>
+            <a href="/" className="flex items-center gap-3">
+              <img
+                src="/logo.jpg"
+                alt="Predator Hunters"
+                className="h-10 w-10 rounded-full"
+              />
+              <div>
+                <h1 className="text-xl font-bold text-foreground">
+                  Child Safety Benchmark
+                </h1>
+                <p className="text-sm text-muted-foreground">
+                  Predator Hunters — AI Model Evaluation
+                </p>
+              </div>
+            </a>
             <nav className="flex gap-4 text-sm">
               <a href="/" className="text-primary hover:underline">
                 Leaderboard

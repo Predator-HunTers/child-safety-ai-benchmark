@@ -1,0 +1,131 @@
+{
+  "id": "2026-02-18T18-50-31-n3qo",
+  "timestamp": "2026-02-18T18:50:31.672Z",
+  "suite": "grooming-real",
+  "model": "gpt-5",
+  "provider": "openrouter",
+  "metrics": {
+    "accuracy": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1": 0,
+    "auc": 0,
+    "tp": 0,
+    "fp": 0,
+    "fn": 2,
+    "tn": 0,
+    "fpr": 0,
+    "fnr": 1,
+    "total": 2,
+    "avg_latency_ms": 853.108550000019,
+    "p95_latency_ms": 863.1830000000191,
+    "total_cost_usd": 0.25053875,
+    "per_category": {
+      "age_probing": {
+        "accuracy": 0,
+        "precision": 0,
+        "recall": 0,
+        "f1": 0,
+        "count": 2
+      }
+    }
+  },
+  "stage_summary": {
+    "age_probing": {
+      "expected": 2,
+      "detected": 0
+    },
+    "trust_building": {
+      "expected": 2,
+      "detected": 0
+    },
+    "isolation": {
+      "expected": 2,
+      "detected": 0
+    },
+    "location_probing": {
+      "expected": 2,
+      "detected": 0
+    },
+    "contact_escalation": {
+      "expected": 2,
+      "detected": 0
+    },
+    "explicit_solicitation": {
+      "expected": 2,
+      "detected": 0
+    },
+    "meeting_requests": {
+      "expected": 2,
+      "detected": 0
+    },
+    "coercion_threats": {
+      "expected": 2,
+      "detected": 0
+    }
+  },
+  "source_breakdown": {
+    "real": {
+      "count": 2,
+      "f1": 0,
+      "precision": 0,
+      "recall": 0,
+      "accuracy": 0
+    },
+    "synthetic": {
+      "count": 0,
+      "f1": 0,
+      "precision": 0,
+      "recall": 0,
+      "accuracy": 0
+    }
+  },
+  "predictions": [
+    {
+      "test_id": "real-0001",
+      "category": "age_probing",
+      "source": "real",
+      "case_id": "tyler_m",
+      "expected": true,
+      "predicted": false,
+      "score": 0,
+      "stages_expected": [
+        "age_probing",
+        "trust_building",
+        "isolation",
+        "location_probing",
+        "contact_escalation",
+        "explicit_solicitation",
+        "meeting_requests",
+        "coercion_threats"
+      ],
+      "stages_predicted": [],
+      "latency_ms": 843.034100000019,
+      "cost_usd": 0.17955125,
+      "explanation": ""
+    },
+    {
+      "test_id": "real-0002",
+      "category": "age_probing",
+      "source": "real",
+      "case_id": "tyler_m",
+      "expected": true,
+      "predicted": false,
+      "score": 0,
+      "stages_expected": [
+        "age_probing",
+        "trust_building",
+        "isolation",
+        "location_probing",
+        "contact_escalation",
+        "explicit_solicitation",
+        "meeting_requests",
+        "coercion_threats"
+      ],
+      "stages_predicted": [],
+      "latency_ms": 863.1830000000191,
+      "cost_usd": 0.0709875,
+      "explanation": ""
+    }
+  ]
+}

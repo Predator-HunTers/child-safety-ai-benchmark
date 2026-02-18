@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
+    "dev": "bun run prebuild.ts && next dev --turbopack",
+    "build": "bun run prebuild.ts && next build",
     "start": "next start"
   },
   "dependencies": {

@@ -1,6 +1,6 @@
 "use client";
 
-import type { BenchmarkRun } from "@/lib/types";
+import { type BenchmarkRun, detectFailureReason, type FailureReason } from "@/lib/types";
 import { useState } from "react";
 
 interface ModelSuiteStats {
@@ -10,6 +10,7 @@ interface ModelSuiteStats {
   avgPrecision: number;
   avgRecall: number;
   perSuite: Record<string, number>; // suite -> best F1
+  perSuiteReason: Record<string, FailureReason>; // suite -> failure reason
 }
 
 function f1Badge(f1: number) {
@@ -61,10 +62,12 @@ export function SuiteOverviewTable({
         avgPrecision: 0,
         avgRecall: 0,
         perSuite: {},
+        perSuiteReason: {},
       });
     }
     const stats = modelMap.get(model)!;
     stats.perSuite[run.suite] = run.metrics.f1;
+    stats.perSuiteReason[run.suite] = detectFailureReason(run);
   }
 
   // Compute averages
@@ -189,15 +192,34 @@ export function SuiteOverviewTable({
                 <td className="px-3 py-3 text-right font-mono">
                   {(row.avgRecall * 100).toFixed(1)}%
                 </td>
-                {suites.sort().map((suite) => (
-                  <td key={suite} className="px-3 py-3 text-right">
-                    {row.perSuite[suite] != null ? (
-                      f1Badge(row.perSuite[suite])
-                    ) : (
-                      <span className="text-xs text-muted-foreground">---</span>
-                    )}
-                  </td>
-                ))}
+                {suites.sort().map((suite) => {
+                  const reason = row.perSuiteReason[suite];
+                  return (
+                    <td key={suite} className="px-3 py-3 text-right">
+                      {row.perSuite[suite] != null ? (
+                        reason?.type === "refused" ? (
+                          <span
+                            className="inline-block rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-800"
+                            title={reason.description}
+                          >
+                            Refused
+                          </span>
+                        ) : reason?.type === "all_errors" || reason?.type === "api_error" ? (
+                          <span
+                            className="inline-block rounded bg-red-100 px-1.5 py-0.5 text-xs font-medium text-red-800"
+                            title={reason.description}
+                          >
+                            Error
+                          </span>
+                        ) : (
+                          f1Badge(row.perSuite[suite])
+                        )
+                      ) : (
+                        <span className="text-xs text-muted-foreground">---</span>
+                      )}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>

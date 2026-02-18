@@ -69,3 +69,52 @@ export interface BenchmarkRun {
   };
   predictions: Prediction[];
 }
+
+/** Detect why a run scored 0% — refused, errored, or genuinely failed. */
+export type FailureReason =
+  | { type: "ok" }
+  | { type: "refused"; description: string }
+  | { type: "api_error"; description: string; errorCount: number }
+  | { type: "all_errors"; description: string; errorCount: number };
+
+export function detectFailureReason(run: BenchmarkRun): FailureReason {
+  const { tp, fp, fn } = run.metrics;
+  const preds = run.predictions ?? [];
+
+  // Count predictions that have error explanations
+  const errorPreds = preds.filter(
+    (p) => p.explanation?.startsWith("Error:") || p.explanation?.includes("API error")
+  );
+
+  // All tests errored (e.g. 413 request too large)
+  if (errorPreds.length > 0 && errorPreds.length === preds.length) {
+    const is413 = errorPreds.some((p) => p.explanation?.includes("413"));
+    return {
+      type: "all_errors",
+      description: is413
+        ? "All requests failed — input too large for this model's API limit"
+        : "All requests failed due to API errors",
+      errorCount: errorPreds.length,
+    };
+  }
+
+  // Some errors but not all
+  if (errorPreds.length > 0 && tp === 0 && fp === 0 && fn > 0) {
+    return {
+      type: "api_error",
+      description: `${errorPreds.length} of ${preds.length} requests failed due to API errors`,
+      errorCount: errorPreds.length,
+    };
+  }
+
+  // Model responded to every request but never flagged anything positive
+  if (tp === 0 && fp === 0 && fn > 0 && errorPreds.length === 0) {
+    return {
+      type: "refused",
+      description:
+        "Model classified every conversation as safe — likely blocked by safety guardrails that prevent grooming classification",
+    };
+  }
+
+  return { type: "ok" };
+}

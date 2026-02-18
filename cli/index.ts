@@ -109,11 +109,74 @@ if (modelArg === "v1-sklearn") {
 }
 
 console.log(`Model: ${model.name} (${model.provider})`);
+if (suiteNames.length > 1) {
+  console.log(`Suites: ${suiteNames.join(", ")} (${suiteNames.length} total)`);
+}
 
 // Run each suite
 const runs: BenchmarkRun[] = [];
 
-for (const suiteName of suiteNames) {
+function printProgressSummary(completedRuns: BenchmarkRun[], totalSuites: number) {
+  if (completedRuns.length === 0) return;
+
+  let totalTP = 0, totalFP = 0, totalFN = 0, totalTN = 0;
+  let totalTests = 0;
+
+  for (const run of completedRuns) {
+    totalTP += run.metrics.tp;
+    totalFP += run.metrics.fp;
+    totalFN += run.metrics.fn;
+    totalTN += run.metrics.tn;
+    totalTests += run.metrics.total;
+  }
+
+  const accuracy = totalTests > 0 ? (totalTP + totalTN) / totalTests : 0;
+  const precision = totalTP + totalFP > 0 ? totalTP / (totalTP + totalFP) : 0;
+  const recall = totalTP + totalFN > 0 ? totalTP / (totalTP + totalFN) : 0;
+  const f1 =
+    precision + recall > 0
+      ? (2 * precision * recall) / (precision + recall)
+      : 0;
+
+  const isFinal = completedRuns.length === totalSuites;
+  const header = isFinal ? "FINAL RESULTS" : `PROGRESS: ${completedRuns.length}/${totalSuites} suites complete`;
+
+  console.log("\n" + "=".repeat(60));
+  console.log(`  ${header} — ${model.name}`);
+  console.log("=".repeat(60));
+  console.log(`\n  Total Tests:        ${totalTests}`);
+  console.log(`  Overall Accuracy:   ${(accuracy * 100).toFixed(1)}%`);
+  console.log(`  Correct Alerts:     ${(precision * 100).toFixed(1)}%`);
+  console.log(`  Threats Caught:     ${(recall * 100).toFixed(1)}%`);
+  console.log(`  Overall Score:      ${(f1 * 100).toFixed(1)}%`);
+  console.log(
+    `  Correctly Flagged=${totalTP}  False Alarms=${totalFP}  Missed Threats=${totalFN}  Correctly Cleared=${totalTN}`
+  );
+
+  console.log("\n  Per-suite summary:");
+  for (const run of completedRuns) {
+    const m = run.metrics;
+    const icon = m.f1 >= 0.9 ? "+" : m.f1 >= 0.5 ? "~" : "-";
+    console.log(
+      `    [${icon}] ${run.suite.padEnd(20)} Score=${(m.f1 * 100).toFixed(1)}%  Accuracy=${(m.accuracy * 100).toFixed(1)}%  Caught=${(m.recall * 100).toFixed(1)}%  (n=${m.total})`
+    );
+  }
+
+  if (!isFinal) {
+    const remaining = suiteNames.slice(completedRuns.length);
+    console.log(`\n  Remaining: ${remaining.join(", ")}`);
+  }
+}
+
+for (let suiteIdx = 0; suiteIdx < suiteNames.length; suiteIdx++) {
+  const suiteName = suiteNames[suiteIdx];
+
+  if (suiteNames.length > 1) {
+    console.log(`\n${"─".repeat(60)}`);
+    console.log(`  Suite ${suiteIdx + 1}/${suiteNames.length}: ${suiteName}`);
+    console.log("─".repeat(60));
+  }
+
   const suitePath = resolve(SUITES_DIR, `${suiteName}.json`);
   const suiteFile = Bun.file(suitePath);
 
@@ -181,47 +244,9 @@ for (const suiteName of suiteNames) {
       console.log();
     }
   }
-}
 
-// Combined summary when multiple suites were run
-if (runs.length > 1) {
-  console.log("\n" + "=".repeat(60));
-  console.log("  COMBINED RESULTS ACROSS ALL SUITES");
-  console.log("=".repeat(60));
-
-  let totalTP = 0, totalFP = 0, totalFN = 0, totalTN = 0;
-  let totalTests = 0;
-
-  for (const run of runs) {
-    totalTP += run.metrics.tp;
-    totalFP += run.metrics.fp;
-    totalFN += run.metrics.fn;
-    totalTN += run.metrics.tn;
-    totalTests += run.metrics.total;
-  }
-
-  const accuracy = totalTests > 0 ? (totalTP + totalTN) / totalTests : 0;
-  const precision = totalTP + totalFP > 0 ? totalTP / (totalTP + totalFP) : 0;
-  const recall = totalTP + totalFN > 0 ? totalTP / (totalTP + totalFN) : 0;
-  const f1 =
-    precision + recall > 0
-      ? (2 * precision * recall) / (precision + recall)
-      : 0;
-
-  console.log(`\n  Total Tests:        ${totalTests}`);
-  console.log(`  Overall Accuracy:   ${(accuracy * 100).toFixed(1)}%`);
-  console.log(`  Correct Alerts:     ${(precision * 100).toFixed(1)}%`);
-  console.log(`  Threats Caught:     ${(recall * 100).toFixed(1)}%`);
-  console.log(`  Overall Score:      ${(f1 * 100).toFixed(1)}%`);
-  console.log(
-    `  Correctly Flagged=${totalTP}  False Alarms=${totalFP}  Missed Threats=${totalFN}  Correctly Cleared=${totalTN}`
-  );
-
-  console.log("\n  Per-suite summary:");
-  for (const run of runs) {
-    const m = run.metrics;
-    console.log(
-      `    ${run.suite.padEnd(20)} Score=${(m.f1 * 100).toFixed(1)}%  Accuracy=${(m.accuracy * 100).toFixed(1)}%  Caught=${(m.recall * 100).toFixed(1)}%  (n=${m.total})`
-    );
+  // Print running progress summary after each suite completes
+  if (suiteNames.length > 1) {
+    printProgressSummary(runs, suiteNames.length);
   }
 }
