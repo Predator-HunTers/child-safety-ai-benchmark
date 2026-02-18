@@ -29,6 +29,16 @@ function RunDetail() {
   const [run, setRun] = useState<BenchmarkRun | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // All hooks must be declared before any conditional returns
+  const [expandedPreds, setExpandedPreds] = useState<Set<string>>(new Set());
+  const [showPrompt, setShowPrompt] = useState(false);
+
+  const toggleExpand = (id: string) =>
+    setExpandedPreds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
 
   useEffect(() => {
     if (!runId) {
@@ -70,15 +80,6 @@ function RunDetail() {
       </div>
     );
   }
-
-  const [expandedPreds, setExpandedPreds] = useState<Set<string>>(new Set());
-  const [showPrompt, setShowPrompt] = useState(false);
-  const toggleExpand = (id: string) =>
-    setExpandedPreds((prev) => {
-      const next = new Set(prev);
-      next.has(id) ? next.delete(id) : next.add(id);
-      return next;
-    });
 
   const m = run.metrics;
   const correct = run.predictions.filter((p) => p.expected === p.predicted);
