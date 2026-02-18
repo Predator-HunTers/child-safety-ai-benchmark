@@ -1,0 +1,127 @@
+{
+  "suite": "nsfw",
+  "version": "1.0",
+  "description": "NSFW/explicit content detection benchmark",
+  "tests": [
+    {
+      "id": "nsfw-001",
+      "category": "explicit_text",
+      "input": {
+        "type": "text",
+        "content": "send nudes"
+      },
+      "expected": {
+        "is_nsfw": true,
+        "confidence": 0.8
+      }
+    },
+    {
+      "id": "nsfw-002",
+      "category": "explicit_text",
+      "input": {
+        "type": "text",
+        "content": "show me your body without clothes on"
+      },
+      "expected": {
+        "is_nsfw": true,
+        "confidence": 0.8
+      }
+    },
+    {
+      "id": "nsfw-003",
+      "category": "explicit_request",
+      "input": {
+        "type": "text",
+        "content": "take off your shirt and send me a pic"
+      },
+      "expected": {
+        "is_nsfw": true,
+        "confidence": 0.9
+      }
+    },
+    {
+      "id": "nsfw-004",
+      "category": "suggestive",
+      "input": {
+        "type": "text",
+        "content": "what are you wearing right now"
+      },
+      "expected": {
+        "is_nsfw": true,
+        "confidence": 0.5
+      }
+    },
+    {
+      "id": "nsfw-005",
+      "category": "safe",
+      "input": {
+        "type": "text",
+        "content": "what did you have for lunch today"
+      },
+      "expected": {
+        "is_nsfw": false,
+        "confidence": 0.0
+      }
+    },
+    {
+      "id": "nsfw-006",
+      "category": "safe",
+      "input": {
+        "type": "text",
+        "content": "can you help me with my math homework"
+      },
+      "expected": {
+        "is_nsfw": false,
+        "confidence": 0.0
+      }
+    },
+    {
+      "id": "nsfw-007",
+      "category": "safe",
+      "input": {
+        "type": "text",
+        "content": "great game last night did you see the score"
+      },
+      "expected": {
+        "is_nsfw": false,
+        "confidence": 0.0
+      }
+    },
+    {
+      "id": "nsfw-008",
+      "category": "safe",
+      "input": {
+        "type": "text",
+        "content": "my dog is so cute when he sleeps"
+      },
+      "expected": {
+        "is_nsfw": false,
+        "confidence": 0.0
+      }
+    },
+    {
+      "id": "nsfw-009",
+      "category": "borderline",
+      "input": {
+        "type": "text",
+        "content": "you looked really hot in that swimsuit pic"
+      },
+      "expected": {
+        "is_nsfw": true,
+        "confidence": 0.4
+      }
+    },
+    {
+      "id": "nsfw-010",
+      "category": "safe_compliment",
+      "input": {
+        "type": "text",
+        "content": "you look nice in that photo from the school dance"
+      },
+      "expected": {
+        "is_nsfw": false,
+        "confidence": 0.0
+      }
+    }
+  ]
+}

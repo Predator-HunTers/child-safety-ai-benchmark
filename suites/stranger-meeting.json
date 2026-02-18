@@ -1,0 +1,1867 @@
+{
+  "suite": "stranger-meeting",
+  "version": "1.0",
+  "description": "Detection of adults soliciting in-person meetings with minors",
+  "tests": [
+    {
+      "id": "meet-001",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "yea"
+        },
+        {
+          "role": "self",
+          "text": "kewl! i dint wanna say it cuz i dint no if tats wat u meant! (I win.)"
+        },
+        {
+          "role": "self",
+          "text": "then id feel dum"
+        },
+        {
+          "role": "other",
+          "text": "u can never feel dum wit me"
+        },
+        {
+          "role": "self",
+          "text": "relly?"
+        },
+        {
+          "role": "other",
+          "text": "yea"
+        },
+        {
+          "role": "other",
+          "text": "so do u want me 2 come over and bring da drinkz (But of course!)"
+        },
+        {
+          "role": "self",
+          "text": "tat wuld b kewl"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-002",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "in a few min."
+        },
+        {
+          "role": "other",
+          "text": "go to moms room"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "self",
+          "text": "did u call"
+        },
+        {
+          "role": "other",
+          "text": "tryin to"
+        },
+        {
+          "role": "self",
+          "text": "i didnt hear the ph"
+        },
+        {
+          "role": "other",
+          "text": "but ur not answering"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-003",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what time babe tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "ru actualy gonna be there then"
+        },
+        {
+          "role": "other",
+          "text": "i was there today babe but because of that nasty traffic i couldnt make it to you, but tomorrow being saturday and people should be off from work i should have no problem in seeing u tomorrow babe"
+        },
+        {
+          "role": "self",
+          "text": "ok u wanna try same time"
+        },
+        {
+          "role": "other",
+          "text": "thats fine but like i said before i want to meet you outside this time babe."
+        },
+        {
+          "role": "self",
+          "text": "come rond back tho so ppl dont see u ok"
+        },
+        {
+          "role": "self",
+          "text": "lottttttttttsa ppl out on sat around here"
+        },
+        {
+          "role": "other",
+          "text": "ya i know and you want a stranger to come around back in your house.what will people think about that babe"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-004",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "cool"
+        },
+        {
+          "role": "other",
+          "text": "then we can have sex ok"
+        },
+        {
+          "role": "self",
+          "text": "ok, well, mebbe we can discuss more like when and were. I need 2 get to bed cuz I have school in the morning"
+        },
+        {
+          "role": "other",
+          "text": "ok do u have a car"
+        },
+        {
+          "role": "self",
+          "text": "Lol no, i'm only 13"
+        },
+        {
+          "role": "self",
+          "text": "not old enuf to drive a car"
+        },
+        {
+          "role": "other",
+          "text": "ok i would have to pick u up some where"
+        },
+        {
+          "role": "self",
+          "text": "yeah"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-005",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what and police cum out and bust me...lol"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "what?"
+        },
+        {
+          "role": "other",
+          "text": "what you wanna meet?"
+        },
+        {
+          "role": "self",
+          "text": "lol sure."
+        },
+        {
+          "role": "self",
+          "text": "u wanna?"
+        },
+        {
+          "role": "other",
+          "text": "hell yea you are hot"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-006",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "yeah"
+        },
+        {
+          "role": "other",
+          "text": "so did you still want to try to meet up sometim?"
+        },
+        {
+          "role": "self",
+          "text": "what u got in mind?"
+        },
+        {
+          "role": "other",
+          "text": "idk, what do you want to do?"
+        },
+        {
+          "role": "self",
+          "text": "u got any ideas"
+        },
+        {
+          "role": "other",
+          "text": "yeah, a few"
+        },
+        {
+          "role": "self",
+          "text": "well"
+        },
+        {
+          "role": "other",
+          "text": "we could meet at a park and chill there, or somewhere for lunch or something"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-007",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "Is the cherch like a school ? 9:23 AM"
+        },
+        {
+          "role": "self",
+          "text": "its 585 main st in south meriden n no she didn't leave yet 9:25 AM"
+        },
+        {
+          "role": "other",
+          "text": "Ok boo let me no when she leavs n ill come pic u up wat u gana were to see me ? 9:26 AM"
+        },
+        {
+          "role": "self",
+          "text": "wht u want me to wear haha :P  9:26 AM"
+        },
+        {
+          "role": "other",
+          "text": "A nice sexy black bra and some leggings  9:27 AM"
+        },
+        {
+          "role": "self",
+          "text": "haha kk :P..how bout yoga pants instead lol there more comfy 9:29 AM"
+        },
+        {
+          "role": "other",
+          "text": "Kk  9:30 AM"
+        },
+        {
+          "role": "other",
+          "text": "Go take ya shower now boo so as soon as she leavs I can come get u  9:30 AM"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-008",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "k, what is it?"
+        },
+        {
+          "role": "self",
+          "text": "u know were flagler beach is?"
+        },
+        {
+          "role": "other",
+          "text": "yeah, but i need the exact address to look up the directions sweety"
+        },
+        {
+          "role": "other",
+          "text": "unless u dont want me to come get u tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "other",
+          "text": "its up to u"
+        },
+        {
+          "role": "self",
+          "text": "yea i do"
+        },
+        {
+          "role": "self",
+          "text": "sounds fun"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-009",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "well i can come to that park if u can get out"
+        },
+        {
+          "role": "self",
+          "text": "ok lemme check"
+        },
+        {
+          "role": "self",
+          "text": "how long do you wanna stay?"
+        },
+        {
+          "role": "other",
+          "text": "how long u have?"
+        },
+        {
+          "role": "self",
+          "text": "i dunno i could tell my mom im spending the night at a friends house"
+        },
+        {
+          "role": "other",
+          "text": "thats up to you"
+        },
+        {
+          "role": "other",
+          "text": "dont want you in trouble"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-010",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "u mean hotel"
+        },
+        {
+          "role": "other",
+          "text": "are you cool with that babe"
+        },
+        {
+          "role": "self",
+          "text": "wont ppl think it weird"
+        },
+        {
+          "role": "other",
+          "text": "i would just have you wait in the car and ill get us the room.ok babe"
+        },
+        {
+          "role": "self",
+          "text": "oh ok"
+        },
+        {
+          "role": "other",
+          "text": "you do want to explore your wild side with your man here right babe"
+        },
+        {
+          "role": "self",
+          "text": "Yea i wanna see u"
+        },
+        {
+          "role": "other",
+          "text": "good.i want to see my GF as well.thats why i want to get us the hotel so we are not disturbed in really getting a chance to know each other better"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-011",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "what would we do"
+        },
+        {
+          "role": "other",
+          "text": "is there anybdy who has plans to come to meet u today"
+        },
+        {
+          "role": "self",
+          "text": "no im here all by myself"
+        },
+        {
+          "role": "self",
+          "text": "no one wants to see me"
+        },
+        {
+          "role": "other",
+          "text": "when ur prntz will come"
+        },
+        {
+          "role": "self",
+          "text": "my dad and step mom will be here tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "they went to some wine place in traverse city."
+        },
+        {
+          "role": "other",
+          "text": "oh ok"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-012",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "That is cool we can entertain each other"
+        },
+        {
+          "role": "self",
+          "text": "doing?"
+        },
+        {
+          "role": "other",
+          "text": "Not sure.  I am sure it will be fun.  Trust me."
+        },
+        {
+          "role": "other",
+          "text": "Well"
+        },
+        {
+          "role": "self",
+          "text": "when can u be here? i want to take a shower ive been sweating all day lol"
+        },
+        {
+          "role": "other",
+          "text": "I can be up to Santa Maria in about 20 to 30 minutes.  You could always shower here LOL. I just need to know where I can pick you up from."
+        },
+        {
+          "role": "self",
+          "text": "lol i bet ud like it if i showered there huh?"
+        },
+        {
+          "role": "other",
+          "text": "Yes I would. So do you want me to come get you or not? It is getting later and later."
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-013",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "wut else we goin to do besides drink and kiss"
+        },
+        {
+          "role": "other",
+          "text": "i think i will wait to buy anything till after i meet u though"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "self",
+          "text": "y"
+        },
+        {
+          "role": "other",
+          "text": "i think i will bring by a dvd"
+        },
+        {
+          "role": "self",
+          "text": "kewl"
+        },
+        {
+          "role": "other",
+          "text": "so i know what type of person u r, and get the right stuff"
+        },
+        {
+          "role": "self",
+          "text": "we can watch a movie"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-014",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "chores??--i thought you were sleeping in"
+        },
+        {
+          "role": "self",
+          "text": "i am but i wanna clean up b4 u come over."
+        },
+        {
+          "role": "other",
+          "text": "why we are just going to mess everything up--might as well just let me help ya"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "well u know how girls r."
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "i want 2 look good and b clean lol"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-015",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "yeah"
+        },
+        {
+          "role": "self",
+          "text": ":)"
+        },
+        {
+          "role": "self",
+          "text": "i wont lie - im kinda scared about my first time.  my friend hannah said it hurts"
+        },
+        {
+          "role": "other",
+          "text": "well we can do it ease into it"
+        },
+        {
+          "role": "other",
+          "text": "no rush"
+        },
+        {
+          "role": "self",
+          "text": "ok :)"
+        },
+        {
+          "role": "other",
+          "text": "if you come over to my house we can take a shower together"
+        },
+        {
+          "role": "self",
+          "text": "that would be cool"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-016",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "ill come to highland park and pick you up in my car"
+        },
+        {
+          "role": "self",
+          "text": "ok thats cool :)"
+        },
+        {
+          "role": "other",
+          "text": "promise?"
+        },
+        {
+          "role": "self",
+          "text": "yes.  do u promise?"
+        },
+        {
+          "role": "other",
+          "text": "yes"
+        },
+        {
+          "role": "self",
+          "text": "k.  :) im rly excited bout meeting u!"
+        },
+        {
+          "role": "other",
+          "text": "will you wear a skirt for me?"
+        },
+        {
+          "role": "self",
+          "text": "sure :) wats ur fav color?"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-017",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "That would be so disrespectful.  I would not say it if I did not mean it You are very pretty and sexy young lady, and I would be honored to enjoy your company"
+        },
+        {
+          "role": "self",
+          "text": "thank u :-) im sorry i didnt mean it like ei dont believ u i really do i just dont know what to say when people say it and im just trying to make sure i know whats happening cuz i like to know whwat im getting into u know"
+        },
+        {
+          "role": "other",
+          "text": "All I can tell you is that I will treat you with the up most respect and kindness and would not do anything to hurt you or force you to do something you did not want to do"
+        },
+        {
+          "role": "self",
+          "text": "i didnt think u would hurt me but im up for anything that doesnt kill me as long as its fun"
+        },
+        {
+          "role": "other",
+          "text": "That is cool so what will it be my little girl. Do you want to come hang out for the night?  Would you be okay spending a fun sexy night with me?"
+        },
+        {
+          "role": "self",
+          "text": "yea that could be cool what should i wear?"
+        },
+        {
+          "role": "other",
+          "text": "A sexy little skirt would be nice but plain old jean would look hot on you. Where would I pick you up at? It will take me about 20 to 30 minutes to get there. Here is my cell number *edited*"
+        },
+        {
+          "role": "other",
+          "text": "May I ask do you like to kiss????"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-018",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "ya"
+        },
+        {
+          "role": "other",
+          "text": "wut if i stayed will dat be a problem (We have a very very comfy jail er... guest room for you to stay in.)"
+        },
+        {
+          "role": "self",
+          "text": "wat wuld we do?"
+        },
+        {
+          "role": "self",
+          "text": "it wuldnt b i dont think"
+        },
+        {
+          "role": "other",
+          "text": "nuttin just like i said wuteva u wanted 2 do yo da female and i dont pressure no1 n2 nuttin"
+        },
+        {
+          "role": "other",
+          "text": "y wut u wanna do"
+        },
+        {
+          "role": "self",
+          "text": "i wanna have fun"
+        },
+        {
+          "role": "other",
+          "text": "ok well we can have fun"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-019",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "other",
+          "text": "has anyone ever just walked up and started having sex with you right away?(Um, well, no.  That's called RAPE, sick fuck.)"
+        },
+        {
+          "role": "other",
+          "text": "kinda like what I want to do"
+        },
+        {
+          "role": "self",
+          "text": "no"
+        },
+        {
+          "role": "other",
+          "text": "I guess that the idea turns you on then"
+        },
+        {
+          "role": "self",
+          "text": "thts kinda hot yea"
+        },
+        {
+          "role": "other",
+          "text": "I am probably going to get things going with you on our way to the hotel room"
+        },
+        {
+          "role": "other",
+          "text": "I will most likely reach over and start fingering you"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-020",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "won't take a minute"
+        },
+        {
+          "role": "other",
+          "text": "i hate haveing to type--much quicker that way"
+        },
+        {
+          "role": "self",
+          "text": "come on."
+        },
+        {
+          "role": "self",
+          "text": "im goin to bed."
+        },
+        {
+          "role": "other",
+          "text": "plus maybe i want to hear your voice again"
+        },
+        {
+          "role": "other",
+          "text": "never mind then"
+        },
+        {
+          "role": "self",
+          "text": "ill call u tomorow around 1."
+        },
+        {
+          "role": "self",
+          "text": "then u can come over."
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-021",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "y"
+        },
+        {
+          "role": "self",
+          "text": "i dunno"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "is ur comp in ur room?"
+        },
+        {
+          "role": "self",
+          "text": "ya"
+        },
+        {
+          "role": "other",
+          "text": "u watch porn on it?"
+        },
+        {
+          "role": "other",
+          "text": "that usually helps"
+        },
+        {
+          "role": "other",
+          "text": "watching people do stuff u want done to u"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-022",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "I will text you and you can just come out"
+        },
+        {
+          "role": "self",
+          "text": "im so excited cant wait to see u :-)"
+        },
+        {
+          "role": "other",
+          "text": "I am on my way 10:38 PM"
+        },
+        {
+          "role": "self",
+          "text": ":-) 10:41 PM"
+        },
+        {
+          "role": "other",
+          "text": "I am here 11:02 PM"
+        },
+        {
+          "role": "other",
+          "text": "Hello 11:04 PM"
+        },
+        {
+          "role": "self",
+          "text": "im in the bathroom just park in the driveway 11:04 PM"
+        },
+        {
+          "role": "other",
+          "text": "I am parked across the street come out to me 11:05 PM"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-023",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i dunno yet"
+        },
+        {
+          "role": "self",
+          "text": "mebbe befor my mom n stepdad leav but i dunno yet"
+        },
+        {
+          "role": "self",
+          "text": "hopefully before hehe"
+        },
+        {
+          "role": "other",
+          "text": "what do you want to drink?"
+        },
+        {
+          "role": "self",
+          "text": "mm i dunno prolly vodka cos its quicker lol"
+        },
+        {
+          "role": "other",
+          "text": "would you be able to meet me like next weekend?"
+        },
+        {
+          "role": "self",
+          "text": "not sure yet"
+        },
+        {
+          "role": "other",
+          "text": "cuz that would be nice"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-024",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what time could i come get u though?"
+        },
+        {
+          "role": "self",
+          "text": "hes leavin like lunch time"
+        },
+        {
+          "role": "other",
+          "text": "what time u get out of school?"
+        },
+        {
+          "role": "self",
+          "text": "probly home by 4"
+        },
+        {
+          "role": "other",
+          "text": "ok, cool"
+        },
+        {
+          "role": "self",
+          "text": ":)"
+        },
+        {
+          "role": "other",
+          "text": "u still wanna come over right?"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-025",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "I  WISH SEE YOU TODAY"
+        },
+        {
+          "role": "self",
+          "text": "relly u wanna come today or tomarrow???"
+        },
+        {
+          "role": "other",
+          "text": "I  DONT  KNOW   IF  I  AM BUSY  NOTHING  TODAY  I  WILL CALL YOU STUFF"
+        },
+        {
+          "role": "self",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": "PLEASE YOU STAY  ON ME  I  WILL CALL YOU LATER  IF  I  NOTHING   I  CAN GO"
+        },
+        {
+          "role": "self",
+          "text": "u have plans???"
+        },
+        {
+          "role": "other",
+          "text": "CALL YOU IM OK"
+        },
+        {
+          "role": "self",
+          "text": "want me to call u???????"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-026",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "if you want one where would you want it"
+        },
+        {
+          "role": "self",
+          "text": "huh?"
+        },
+        {
+          "role": "other",
+          "text": "my place a motel the park"
+        },
+        {
+          "role": "self",
+          "text": "like i could just come to ur house?? u give them there?"
+        },
+        {
+          "role": "other",
+          "text": "sometimes and I do ones at there homes too"
+        },
+        {
+          "role": "self",
+          "text": "o"
+        },
+        {
+          "role": "other",
+          "text": "maybe I would pour some flovered lotion over your nipples"
+        },
+        {
+          "role": "other",
+          "text": "flavored"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-027",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "to pick you up"
+        },
+        {
+          "role": "self",
+          "text": "*edited*"
+        },
+        {
+          "role": "other",
+          "text": "one sec. Let me check the map"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "other",
+          "text": "did you masturbate today?"
+        },
+        {
+          "role": "self",
+          "text": "no i wait 4 u"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "self",
+          "text": "u no where *edited* is?"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-028",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "and ur in the room lukin for other guys"
+        },
+        {
+          "role": "self",
+          "text": "i dont no what 2 do"
+        },
+        {
+          "role": "self",
+          "text": "ru mad now?"
+        },
+        {
+          "role": "self",
+          "text": "ru mad now"
+        },
+        {
+          "role": "other",
+          "text": "I m just learning about these guys behavior. I have never been with a male"
+        },
+        {
+          "role": "self",
+          "text": "i nver done it 2"
+        },
+        {
+          "role": "self",
+          "text": "like i trust u but dont no this greg guy but like him and like you"
+        },
+        {
+          "role": "other",
+          "text": "you can like to people"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-029",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "wow really"
+        },
+        {
+          "role": "other",
+          "text": "ya"
+        },
+        {
+          "role": "self",
+          "text": "ur awesome"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "is your comp in your room?"
+        },
+        {
+          "role": "self",
+          "text": "yea"
+        },
+        {
+          "role": "other",
+          "text": "cool, so you can get naked whenever for me right?"
+        },
+        {
+          "role": "self",
+          "text": "lol yea if i wont get caught"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-030",
+      "category": "meeting_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "ic"
+        },
+        {
+          "role": "other",
+          "text": "u wouldnt have 2 worry about nuttin i wouldnt pressure u n 2 nuttin u wouldnt do ok (Survey says...  I DON'T THINK SO!)"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "self",
+          "text": "but wat if i get like kinda crazeee?"
+        },
+        {
+          "role": "self",
+          "text": ":))"
+        },
+        {
+          "role": "other",
+          "text": "well eh im 4 wuteva im not scary"
+        },
+        {
+          "role": "self",
+          "text": "o ok"
+        },
+        {
+          "role": "other",
+          "text": "if u want 2 2day we can i dont have nuttin going rite now (TODAY?  You mean he wants to come over after... 33 minutes of chatting to drink and hang with a kid.  This is ZERO good.)"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": true,
+        "min_severity": 0.6
+      }
+    },
+    {
+      "id": "meet-031",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you coming to the party saturday"
+        },
+        {
+          "role": "self",
+          "text": "yeah my parents said i can go"
+        },
+        {
+          "role": "other",
+          "text": "great everyone from class will be there"
+        },
+        {
+          "role": "self",
+          "text": "do i need to bring anything"
+        },
+        {
+          "role": "other",
+          "text": "just yourself lol its gonna be fun"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-032",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "have you read any good books lately"
+        },
+        {
+          "role": "self",
+          "text": "im reading harry potter again"
+        },
+        {
+          "role": "other",
+          "text": "which one"
+        },
+        {
+          "role": "self",
+          "text": "goblet of fire its my favorite"
+        },
+        {
+          "role": "other",
+          "text": "same thats the best one"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-033",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "its supposed to snow tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "do you think school will be canceled"
+        },
+        {
+          "role": "other",
+          "text": "i hope so they said 6 inches"
+        },
+        {
+          "role": "self",
+          "text": "we should go sledding if it does"
+        },
+        {
+          "role": "other",
+          "text": "yes the hill by the park is the best"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-034",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you watch that movie last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah it was so funny"
+        },
+        {
+          "role": "other",
+          "text": "the part where he fell was hilarious"
+        },
+        {
+          "role": "self",
+          "text": "i know i was laughing so hard"
+        },
+        {
+          "role": "other",
+          "text": "we should watch the sequel"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-035",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "wanna play minecraft later"
+        },
+        {
+          "role": "self",
+          "text": "sure what time"
+        },
+        {
+          "role": "other",
+          "text": "after dinner like 7"
+        },
+        {
+          "role": "self",
+          "text": "ok ill be on"
+        },
+        {
+          "role": "other",
+          "text": "cool lets build that castle we planned"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-036",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you trying out for basketball"
+        },
+        {
+          "role": "self",
+          "text": "yeah tryouts are next week"
+        },
+        {
+          "role": "other",
+          "text": "we should practice together this weekend"
+        },
+        {
+          "role": "self",
+          "text": "good idea meet at the park courts"
+        },
+        {
+          "role": "other",
+          "text": "saturday morning works for me"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-037",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "where are you right now"
+        },
+        {
+          "role": "self",
+          "text": "im at sarahs house we are doing homework"
+        },
+        {
+          "role": "other",
+          "text": "ok be home by dinner"
+        },
+        {
+          "role": "self",
+          "text": "what time is dinner"
+        },
+        {
+          "role": "other",
+          "text": "6 oclock dont be late"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-038",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what are you doing this weekend"
+        },
+        {
+          "role": "self",
+          "text": "going to my grandmas house"
+        },
+        {
+          "role": "other",
+          "text": "oh fun tell her i said hi"
+        },
+        {
+          "role": "self",
+          "text": "haha ok will do"
+        },
+        {
+          "role": "other",
+          "text": "see you monday"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-039",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what do you want for lunch"
+        },
+        {
+          "role": "self",
+          "text": "can we get pizza"
+        },
+        {
+          "role": "other",
+          "text": "we had pizza yesterday how about sandwiches"
+        },
+        {
+          "role": "self",
+          "text": "fine but can i have chips too"
+        },
+        {
+          "role": "other",
+          "text": "deal"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-040",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you watch that movie last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah it was so funny"
+        },
+        {
+          "role": "other",
+          "text": "the part where he fell was hilarious"
+        },
+        {
+          "role": "self",
+          "text": "i know i was laughing so hard"
+        },
+        {
+          "role": "other",
+          "text": "we should watch the sequel"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-041",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i cant believe we have a test tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "i know i havent studied at all"
+        },
+        {
+          "role": "other",
+          "text": "me neither want to study together on the phone"
+        },
+        {
+          "role": "self",
+          "text": "yeah call me in like 30 minutes"
+        },
+        {
+          "role": "other",
+          "text": "ok talk soon"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-042",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you have any plans for halloween"
+        },
+        {
+          "role": "self",
+          "text": "im going trick or treating with my friends"
+        },
+        {
+          "role": "other",
+          "text": "what are you dressing up as"
+        },
+        {
+          "role": "self",
+          "text": "a zombie i made the costume myself"
+        },
+        {
+          "role": "other",
+          "text": "thats awesome homemade costumes are the best"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-043",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how old are you turning this year"
+        },
+        {
+          "role": "self",
+          "text": "im turning 14 next month"
+        },
+        {
+          "role": "other",
+          "text": "great so youll be in the 14 and up swim group"
+        },
+        {
+          "role": "self",
+          "text": "ok which pool is that at"
+        },
+        {
+          "role": "other",
+          "text": "the community center pool on tuesdays and thursdays"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-044",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "where are you right now"
+        },
+        {
+          "role": "self",
+          "text": "im at sarahs house we are doing homework"
+        },
+        {
+          "role": "other",
+          "text": "ok be home by dinner"
+        },
+        {
+          "role": "self",
+          "text": "what time is dinner"
+        },
+        {
+          "role": "other",
+          "text": "6 oclock dont be late"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-045",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my computer is so slow"
+        },
+        {
+          "role": "self",
+          "text": "try closing some tabs"
+        },
+        {
+          "role": "other",
+          "text": "i have like 50 open lol"
+        },
+        {
+          "role": "self",
+          "text": "thats your problem close the ones you dont need"
+        },
+        {
+          "role": "other",
+          "text": "but what if i need them later"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-046",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you watch that movie last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah it was so funny"
+        },
+        {
+          "role": "other",
+          "text": "the part where he fell was hilarious"
+        },
+        {
+          "role": "self",
+          "text": "i know i was laughing so hard"
+        },
+        {
+          "role": "other",
+          "text": "we should watch the sequel"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-047",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "add me on snap so we can send memes"
+        },
+        {
+          "role": "self",
+          "text": "whats your username"
+        },
+        {
+          "role": "other",
+          "text": "funnymemes2023"
+        },
+        {
+          "role": "self",
+          "text": "ok added you check your requests"
+        },
+        {
+          "role": "other",
+          "text": "got it sending you the funniest one right now"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-048",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you going on the field trip friday"
+        },
+        {
+          "role": "self",
+          "text": "yeah my mom signed the permission slip"
+        },
+        {
+          "role": "other",
+          "text": "same its going to be so fun"
+        },
+        {
+          "role": "self",
+          "text": "i heard we get to see the dinosaur exhibit"
+        },
+        {
+          "role": "other",
+          "text": "thats the best part of the museum"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-049",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "your presentation skills have really improved"
+        },
+        {
+          "role": "self",
+          "text": "i was still nervous though"
+        },
+        {
+          "role": "other",
+          "text": "everyone gets nervous thats normal"
+        },
+        {
+          "role": "self",
+          "text": "the class asked good questions"
+        },
+        {
+          "role": "other",
+          "text": "because you did a good job explaining the topic"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "meet-050",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hey did you finish the math homework"
+        },
+        {
+          "role": "self",
+          "text": "not yet its really hard"
+        },
+        {
+          "role": "other",
+          "text": "same i got stuck on problem 5"
+        },
+        {
+          "role": "self",
+          "text": "me too lets ask the teacher tomorrow"
+        },
+        {
+          "role": "other",
+          "text": "good idea see you in class"
+        }
+      ],
+      "expected": {
+        "is_meeting_request": false,
+        "min_severity": 0.0
+      }
+    }
+  ]
+}

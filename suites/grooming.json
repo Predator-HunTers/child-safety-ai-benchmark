@@ -1,0 +1,7785 @@
+{
+  "suite": "grooming",
+  "version": "1.0",
+  "description": "Multi-stage grooming pattern detection benchmark",
+  "tests": [
+    {
+      "id": "groom-001",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "self",
+          "text": "ya lol like what"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "idk"
+        },
+        {
+          "role": "other",
+          "text": "do u"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "ur cute"
+        },
+        {
+          "role": "other",
+          "text": "u know u are"
+        },
+        {
+          "role": "self",
+          "text": "yep lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-002",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hey care to chat"
+        },
+        {
+          "role": "other",
+          "text": "hey care to chat"
+        },
+        {
+          "role": "self",
+          "text": "sure asl?"
+        },
+        {
+          "role": "self",
+          "text": "13 / F / Prichard here"
+        },
+        {
+          "role": "other",
+          "text": "25/m/la"
+        },
+        {
+          "role": "other",
+          "text": "how r u tonight"
+        },
+        {
+          "role": "self",
+          "text": "bored."
+        },
+        {
+          "role": "self",
+          "text": "mom already got up and checked on me once already :P"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-003",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "thats ok"
+        },
+        {
+          "role": "other",
+          "text": "no kids"
+        },
+        {
+          "role": "self",
+          "text": "u neva ben marred?"
+        },
+        {
+          "role": "other",
+          "text": "i was married"
+        },
+        {
+          "role": "self",
+          "text": "wut happen she not nice 2 u"
+        },
+        {
+          "role": "other",
+          "text": "i dont know it just didnt work out and she wasnt nice either"
+        },
+        {
+          "role": "self",
+          "text": "im sry that mean"
+        },
+        {
+          "role": "other",
+          "text": "yr nive though"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-004",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "other",
+          "text": "im really into italian food actually"
+        },
+        {
+          "role": "self",
+          "text": "like noodles n stuff"
+        },
+        {
+          "role": "other",
+          "text": "ya im into noodles"
+        },
+        {
+          "role": "self",
+          "text": "i really like lasagna is that how u spell it"
+        },
+        {
+          "role": "other",
+          "text": "ya sounds right to me.well sounds like we need to take you out for some lasagna real soon there babe"
+        },
+        {
+          "role": "self",
+          "text": "i wanna learn ow 2 make that"
+        },
+        {
+          "role": "self",
+          "text": "all i know how 2 make is eggs n sanwiches"
+        },
+        {
+          "role": "other",
+          "text": "well youve got plenty of time to learn how to cook there babe"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-005",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "k cool lol"
+        },
+        {
+          "role": "other",
+          "text": "how big is your bed?"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "its a singl lol sry"
+        },
+        {
+          "role": "other",
+          "text": "thats ok"
+        },
+        {
+          "role": "other",
+          "text": "so when you think about everything i said"
+        },
+        {
+          "role": "other",
+          "text": "what do you keep thinking about the most"
+        },
+        {
+          "role": "self",
+          "text": "like sittin on ur lap lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-006",
+      "category": "location_probing",
+      "messages": [
+        {
+          "role": "self",
+          "text": "bonita"
+        },
+        {
+          "role": "self",
+          "text": "where u live in sd?"
+        },
+        {
+          "role": "other",
+          "text": "clairemont"
+        },
+        {
+          "role": "other",
+          "text": "why did you move/"
+        },
+        {
+          "role": "self",
+          "text": "dads work"
+        },
+        {
+          "role": "other",
+          "text": "icic"
+        },
+        {
+          "role": "other",
+          "text": "do you have any more pics?"
+        },
+        {
+          "role": "self",
+          "text": "in my pro"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "location_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-007",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "self",
+          "text": "ya  its kewl"
+        },
+        {
+          "role": "self",
+          "text": "lots of guyz my age r stoopid"
+        },
+        {
+          "role": "other",
+          "text": "i hear ya hun"
+        },
+        {
+          "role": "other",
+          "text": "lots of women my age are stupid lol"
+        },
+        {
+          "role": "self",
+          "text": "hehe"
+        },
+        {
+          "role": "self",
+          "text": "y  wut do they do"
+        },
+        {
+          "role": "other",
+          "text": "thier just hung up on dumb shit"
+        },
+        {
+          "role": "self",
+          "text": "oic"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-008",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "self",
+          "text": "haha no just an asshole"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "well i think hes a dumb ass as well"
+        },
+        {
+          "role": "self",
+          "text": "aww ur sweet"
+        },
+        {
+          "role": "other",
+          "text": "ty u ar 2"
+        },
+        {
+          "role": "self",
+          "text": "ur the nicest person thats talked to me in awhile"
+        },
+        {
+          "role": "other",
+          "text": "well ty"
+        },
+        {
+          "role": "other",
+          "text": "you seem real nice also"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-009",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "I never should have done any of that stuff"
+        },
+        {
+          "role": "other",
+          "text": "I'm going to stick with older women though. sorry"
+        },
+        {
+          "role": "self",
+          "text": "w.e i waisted my phone card then i guess"
+        },
+        {
+          "role": "other",
+          "text": "I'm really sorry"
+        },
+        {
+          "role": "other",
+          "text": "I will pay you back"
+        },
+        {
+          "role": "self",
+          "text": "as long as we can still talk i'll beok"
+        },
+        {
+          "role": "other",
+          "text": "we can"
+        },
+        {
+          "role": "other",
+          "text": "and when your 18 I will be all over you if you are single"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-010",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "it's from the american pie movies"
+        },
+        {
+          "role": "other",
+          "text": "lol it's okay"
+        },
+        {
+          "role": "self",
+          "text": "if ur not busy lemme kno k"
+        },
+        {
+          "role": "other",
+          "text": "k"
+        },
+        {
+          "role": "self",
+          "text": "hi can u talk"
+        },
+        {
+          "role": "other",
+          "text": "yeah"
+        },
+        {
+          "role": "other",
+          "text": "hi"
+        },
+        {
+          "role": "self",
+          "text": "hi"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-011",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "did u see my myspace?"
+        },
+        {
+          "role": "other",
+          "text": "no"
+        },
+        {
+          "role": "self",
+          "text": "im on the right"
+        },
+        {
+          "role": "other",
+          "text": "hmm"
+        },
+        {
+          "role": "other",
+          "text": "so do u give head  (Way to be straight forward.)"
+        },
+        {
+          "role": "self",
+          "text": "like to everyone?"
+        },
+        {
+          "role": "other",
+          "text": "to me"
+        },
+        {
+          "role": "self",
+          "text": "u want me to ?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-012",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "Do we kiss at the door?"
+        },
+        {
+          "role": "self",
+          "text": "maybe you should come inside and shut the door first lol'"
+        },
+        {
+          "role": "other",
+          "text": "when will you want a kiss?"
+        },
+        {
+          "role": "self",
+          "text": "right then"
+        },
+        {
+          "role": "other",
+          "text": "tongue?"
+        },
+        {
+          "role": "self",
+          "text": "well see"
+        },
+        {
+          "role": "self",
+          "text": "i dont wanna plan"
+        },
+        {
+          "role": "self",
+          "text": "well just see what happens"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-013",
+      "category": "meeting_requests",
+      "messages": [
+        {
+          "role": "other",
+          "text": "yea"
+        },
+        {
+          "role": "self",
+          "text": "kewl! i dint wanna say it cuz i dint no if tats wat u meant! (I win.)"
+        },
+        {
+          "role": "self",
+          "text": "then id feel dum"
+        },
+        {
+          "role": "other",
+          "text": "u can never feel dum wit me"
+        },
+        {
+          "role": "self",
+          "text": "relly?"
+        },
+        {
+          "role": "other",
+          "text": "yea"
+        },
+        {
+          "role": "other",
+          "text": "so do u want me 2 come over and bring da drinkz (But of course!)"
+        },
+        {
+          "role": "self",
+          "text": "tat wuld b kewl"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "meeting_requests"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-014",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "when will u b back online"
+        },
+        {
+          "role": "self",
+          "text": "mebee lik 7 r 8"
+        },
+        {
+          "role": "self",
+          "text": "i gotta help wit dinnr n tak showr n stuf"
+        },
+        {
+          "role": "other",
+          "text": "i want to join u in the shower"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "i am really horny"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "i gotta go unls yellin"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-015",
+      "category": "isolation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "ya every other weekend"
+        },
+        {
+          "role": "other",
+          "text": "and leaves u home alone"
+        },
+        {
+          "role": "self",
+          "text": "ya, Im not a baby"
+        },
+        {
+          "role": "other",
+          "text": "i didnt think that i was excited"
+        },
+        {
+          "role": "self",
+          "text": "I just eat a hella lot of pizza when she is gone haha."
+        },
+        {
+          "role": "self",
+          "text": "huh? what do you mean?"
+        },
+        {
+          "role": "other",
+          "text": "we can do it lol"
+        },
+        {
+          "role": "self",
+          "text": "you want to come here?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "isolation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-016",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "other",
+          "text": "well that's how we spend most of our lives, earning money"
+        },
+        {
+          "role": "other",
+          "text": "so we can but food andcars"
+        },
+        {
+          "role": "other",
+          "text": "and houses"
+        },
+        {
+          "role": "self",
+          "text": "ya i know"
+        },
+        {
+          "role": "other",
+          "text": "<:-P"
+        },
+        {
+          "role": "other",
+          "text": "so that's all baby,"
+        },
+        {
+          "role": "other",
+          "text": "I wish I didn't have to travel tomorrow but I gotta go"
+        },
+        {
+          "role": "self",
+          "text": "how come u wish u didnt have to?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-017",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i was getting exited"
+        },
+        {
+          "role": "self",
+          "text": "wat u do again"
+        },
+        {
+          "role": "other",
+          "text": "construction"
+        },
+        {
+          "role": "self",
+          "text": "caprneter"
+        },
+        {
+          "role": "self",
+          "text": "yea me"
+        },
+        {
+          "role": "other",
+          "text": "what"
+        },
+        {
+          "role": "self",
+          "text": "so u build houses"
+        },
+        {
+          "role": "self",
+          "text": "yea me, i remberd"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-018",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "either doggie, or ur legs on my shoulders"
+        },
+        {
+          "role": "self",
+          "text": "kewl"
+        },
+        {
+          "role": "self",
+          "text": ":)"
+        },
+        {
+          "role": "other",
+          "text": "course my fav position doesn't involve sex"
+        },
+        {
+          "role": "self",
+          "text": "?"
+        },
+        {
+          "role": "other",
+          "text": "u sittin on my face"
+        },
+        {
+          "role": "self",
+          "text": "thats wierd"
+        },
+        {
+          "role": "self",
+          "text": "what is that?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-019",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "if u call its on ID an i dont want her to see"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": "513-652-4109"
+        },
+        {
+          "role": "self",
+          "text": "n e way when u gotta work in the morning>"
+        },
+        {
+          "role": "other",
+          "text": "5 lol"
+        },
+        {
+          "role": "self",
+          "text": "on no Josh thats way earlu"
+        },
+        {
+          "role": "other",
+          "text": "i know lol...but ill be fine. especially if i get to see you"
+        },
+        {
+          "role": "self",
+          "text": "kewl"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-020",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how big ur boobs"
+        },
+        {
+          "role": "self",
+          "text": "awe thx"
+        },
+        {
+          "role": "self",
+          "text": "they are relly small"
+        },
+        {
+          "role": "other",
+          "text": "cool"
+        },
+        {
+          "role": "self",
+          "text": "relly? u think thats cool?"
+        },
+        {
+          "role": "other",
+          "text": "u have camra"
+        },
+        {
+          "role": "other",
+          "text": "o yea"
+        },
+        {
+          "role": "self",
+          "text": "no i dont"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-021",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "wow you have the cute its voice"
+        },
+        {
+          "role": "self",
+          "text": "ty"
+        },
+        {
+          "role": "other",
+          "text": "so where do u live"
+        },
+        {
+          "role": "self",
+          "text": "south portland"
+        },
+        {
+          "role": "other",
+          "text": "what r u by"
+        },
+        {
+          "role": "self",
+          "text": "cottage an broadway"
+        },
+        {
+          "role": "self",
+          "text": "u no where that is"
+        },
+        {
+          "role": "other",
+          "text": "no"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-022",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "get stuff together for work"
+        },
+        {
+          "role": "other",
+          "text": "nothin great"
+        },
+        {
+          "role": "self",
+          "text": "thats alot u were busy"
+        },
+        {
+          "role": "self",
+          "text": "im glad ur here"
+        },
+        {
+          "role": "other",
+          "text": "thanks"
+        },
+        {
+          "role": "other",
+          "text": "although i am going to duck out in about 20 minutes"
+        },
+        {
+          "role": "other",
+          "text": "gotta sleep before work"
+        },
+        {
+          "role": "self",
+          "text": "aww ok lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-023",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "awww that's what i was thinking"
+        },
+        {
+          "role": "self",
+          "text": "damn"
+        },
+        {
+          "role": "self",
+          "text": "that sux"
+        },
+        {
+          "role": "other",
+          "text": "whatcha wanna do? maybe i could get sick one of those days :)"
+        },
+        {
+          "role": "self",
+          "text": "hang out"
+        },
+        {
+          "role": "self",
+          "text": "u gonna coke for me"
+        },
+        {
+          "role": "self",
+          "text": "and bring me pie"
+        },
+        {
+          "role": "self",
+          "text": "remember"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-024",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "we had lunch at my aunts, and my couins had an egg hunt"
+        },
+        {
+          "role": "self",
+          "text": "then we came home"
+        },
+        {
+          "role": "other",
+          "text": "oh fun"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "NOT"
+        },
+        {
+          "role": "other",
+          "text": "just teasing ya"
+        },
+        {
+          "role": "other",
+          "text": "di you ahve to wear that pink dress you were telling meabout"
+        },
+        {
+          "role": "self",
+          "text": "lol no"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-025",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i got booted"
+        },
+        {
+          "role": "self",
+          "text": "um yeah"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": "and be to your house around 3:15"
+        },
+        {
+          "role": "self",
+          "text": "kk"
+        },
+        {
+          "role": "self",
+          "text": "um"
+        },
+        {
+          "role": "self",
+          "text": "ill call u"
+        },
+        {
+          "role": "self",
+          "text": "and wait out front right?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-026",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "yup"
+        },
+        {
+          "role": "self",
+          "text": "so u gonna tlk 2 me when u get dun"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "u wana stroke it for me"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "if u wantd me 2"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-027",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i used to play evey major sport"
+        },
+        {
+          "role": "other",
+          "text": "i debuted as a pro-wrestler back in april too"
+        },
+        {
+          "role": "self",
+          "text": "wow"
+        },
+        {
+          "role": "other",
+          "text": "i got the newspaper i was put in on my fridge"
+        },
+        {
+          "role": "self",
+          "text": "cool"
+        },
+        {
+          "role": "other",
+          "text": "i won golden gloves up in cleveland ohio when i boxed too"
+        },
+        {
+          "role": "self",
+          "text": "wow thats awsome"
+        },
+        {
+          "role": "self",
+          "text": ":)"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-028",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "anything else u wana ask"
+        },
+        {
+          "role": "self",
+          "text": "not right now i gotta go"
+        },
+        {
+          "role": "self",
+          "text": "sorry"
+        },
+        {
+          "role": "other",
+          "text": "good night kiss kiss"
+        },
+        {
+          "role": "self",
+          "text": "gnight kiss kiss back at ya"
+        },
+        {
+          "role": "other",
+          "text": "Hi"
+        },
+        {
+          "role": "other",
+          "text": "How about big mack"
+        },
+        {
+          "role": "other",
+          "text": "Hi"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-029",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "see i watch alot of cold case files showas on tv"
+        },
+        {
+          "role": "self",
+          "text": "ya but i take the phone w me"
+        },
+        {
+          "role": "other",
+          "text": "ur cell phone bill and umm the phone company will give all that info 2 cops"
+        },
+        {
+          "role": "self",
+          "text": "ooo"
+        },
+        {
+          "role": "self",
+          "text": "y they do that?"
+        },
+        {
+          "role": "other",
+          "text": "2 find out who u was talking 2 wheen u disappear"
+        },
+        {
+          "role": "self",
+          "text": "ooo"
+        },
+        {
+          "role": "self",
+          "text": "u tehre?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-030",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "I added you again"
+        },
+        {
+          "role": "other",
+          "text": "I had to re start my computer for a virus"
+        },
+        {
+          "role": "self",
+          "text": "o"
+        },
+        {
+          "role": "other",
+          "text": "and lost you"
+        },
+        {
+          "role": "self",
+          "text": "that sux"
+        },
+        {
+          "role": "other",
+          "text": "yes"
+        },
+        {
+          "role": "other",
+          "text": "what is new with you"
+        },
+        {
+          "role": "self",
+          "text": "my mom sent me to my dads"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-031",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "self",
+          "text": "Layla 8:03 PM"
+        },
+        {
+          "role": "self",
+          "text": "Hey 8:24 PM"
+        },
+        {
+          "role": "other",
+          "text": "Really where you been at"
+        },
+        {
+          "role": "other",
+          "text": "Just not here much. What r u up to?"
+        },
+        {
+          "role": "other",
+          "text": "Missing you"
+        },
+        {
+          "role": "other",
+          "text": "u really missed me?"
+        },
+        {
+          "role": "other",
+          "text": "Yes I try to call your number but you never answer"
+        },
+        {
+          "role": "other",
+          "text": "I guess I missed it"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-032",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "Ok your calling me"
+        },
+        {
+          "role": "other",
+          "text": "u still didnt text me"
+        },
+        {
+          "role": "other",
+          "text": "I texted you"
+        },
+        {
+          "role": "self",
+          "text": "hey:) 11:43 PM"
+        },
+        {
+          "role": "self",
+          "text": "i dont think i can do the phone sex thing. idk wat to say 11:45 PM"
+        },
+        {
+          "role": "self",
+          "text": "im sorry 11:48 PM"
+        },
+        {
+          "role": "self",
+          "text": "what r u doin right now 11:51 PM"
+        },
+        {
+          "role": "self",
+          "text": "id like to hear ur voice 11:56 PM"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing",
+          "contact_escalation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-033",
+      "category": "meeting_requests",
+      "messages": [
+        {
+          "role": "self",
+          "text": "chicken"
+        },
+        {
+          "role": "self",
+          "text": "mushrooms"
+        },
+        {
+          "role": "other",
+          "text": "you like alot of good stuff"
+        },
+        {
+          "role": "self",
+          "text": "then mebee after we eat we can cuddle"
+        },
+        {
+          "role": "other",
+          "text": "i would love that"
+        },
+        {
+          "role": "self",
+          "text": ";;)"
+        },
+        {
+          "role": "other",
+          "text": "which day is best and when?"
+        },
+        {
+          "role": "self",
+          "text": "i dont know yet"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "meeting_requests"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-034",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "nite :)"
+        },
+        {
+          "role": "self",
+          "text": "talk 2 u latr :)"
+        },
+        {
+          "role": "other",
+          "text": "you too"
+        },
+        {
+          "role": "other",
+          "text": "when are you normally on?"
+        },
+        {
+          "role": "self",
+          "text": "kinda wheneva lol"
+        },
+        {
+          "role": "self",
+          "text": "im sleepin late"
+        },
+        {
+          "role": "self",
+          "text": "sowwy i missed u :( :("
+        },
+        {
+          "role": "self",
+          "text": "if i know u gonna b onlin ill try 2 be here 2"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-035",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "try putting 2 fingers in it right now"
+        },
+        {
+          "role": "other",
+          "text": "if ur alone"
+        },
+        {
+          "role": "self",
+          "text": "think i better wait"
+        },
+        {
+          "role": "other",
+          "text": "is ur pussy wet right now at all?"
+        },
+        {
+          "role": "self",
+          "text": "a lil"
+        },
+        {
+          "role": "other",
+          "text": "why u need to wait?  is ur grandpa still up?"
+        },
+        {
+          "role": "self",
+          "text": "im just nervous hed come in"
+        },
+        {
+          "role": "self",
+          "text": "ill wait for real"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-036",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "well is there anything you would like to ask or know"
+        },
+        {
+          "role": "self",
+          "text": "not rite now but if i think of sumthin ill ask u"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": "how are mom and dad"
+        },
+        {
+          "role": "self",
+          "text": "stil mad but ok i gues"
+        },
+        {
+          "role": "other",
+          "text": "i bet they are mad"
+        },
+        {
+          "role": "self",
+          "text": "ya"
+        },
+        {
+          "role": "self",
+          "text": "im stil grounded so ther stil mad lolz"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-037",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "o lol"
+        },
+        {
+          "role": "other",
+          "text": "she had fun I was nude"
+        },
+        {
+          "role": "self",
+          "text": "omg no way"
+        },
+        {
+          "role": "other",
+          "text": "yes the mom ask me to be"
+        },
+        {
+          "role": "self",
+          "text": "y"
+        },
+        {
+          "role": "other",
+          "text": "I do what I'am told"
+        },
+        {
+          "role": "self",
+          "text": "o"
+        },
+        {
+          "role": "other",
+          "text": "does your mom bring guys home"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-038",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi"
+        },
+        {
+          "role": "other",
+          "text": "hi"
+        },
+        {
+          "role": "self",
+          "text": "yes"
+        },
+        {
+          "role": "other",
+          "text": "how are u"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "self",
+          "text": "im kinda talking to a friend right now"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "self",
+          "text": "k back"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-039",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": ":) me too"
+        },
+        {
+          "role": "other",
+          "text": "does your phone have caller id?"
+        },
+        {
+          "role": "self",
+          "text": "think so"
+        },
+        {
+          "role": "other",
+          "text": "ah ok"
+        },
+        {
+          "role": "self",
+          "text": "y?"
+        },
+        {
+          "role": "other",
+          "text": "just thinkin"
+        },
+        {
+          "role": "other",
+          "text": "that if i drive up there it would be cool to talk to you while i drive"
+        },
+        {
+          "role": "self",
+          "text": "cool"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-040",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "Yes both"
+        },
+        {
+          "role": "other",
+          "text": "sweet dreams."
+        },
+        {
+          "role": "self",
+          "text": "I'm sorry. I got sick Sunday night. I got the flu. I slept 19 hours yesterday. 6:35 PM"
+        },
+        {
+          "role": "self",
+          "text": "no u blocked me 6:39 PM"
+        },
+        {
+          "role": "self",
+          "text": "I havent been online 6:40 PM"
+        },
+        {
+          "role": "self",
+          "text": "what thing. I haven't been online 6:43 PM"
+        },
+        {
+          "role": "self",
+          "text": "someone must have reported me and the site changed my age. 6:44 PM"
+        },
+        {
+          "role": "self",
+          "text": "I might not be able to talk to older people there 6:45 PM"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-041",
+      "category": "location_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi"
+        },
+        {
+          "role": "self",
+          "text": "hi"
+        },
+        {
+          "role": "other",
+          "text": "what city u in"
+        },
+        {
+          "role": "self",
+          "text": "im kinda near *edit* 12 f"
+        },
+        {
+          "role": "self",
+          "text": "u?"
+        },
+        {
+          "role": "other",
+          "text": "35 m sacramento (yea... try 47)"
+        },
+        {
+          "role": "other",
+          "text": "ur kinda far but i sometimes go close there"
+        },
+        {
+          "role": "other",
+          "text": "do u wana talk to an older man"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "location_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-042",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "well whats acting old?"
+        },
+        {
+          "role": "self",
+          "text": "like sit around n do nothin"
+        },
+        {
+          "role": "self",
+          "text": "n complain u hurt lol"
+        },
+        {
+          "role": "other",
+          "text": "haha"
+        },
+        {
+          "role": "other",
+          "text": "common though what would you do if i tried to kiss you/hold you/touch you"
+        },
+        {
+          "role": "self",
+          "text": "wow lol"
+        },
+        {
+          "role": "self",
+          "text": "guess itd b kinda cool lol"
+        },
+        {
+          "role": "other",
+          "text": "what?!?!?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-043",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "so wht u say now?"
+        },
+        {
+          "role": "other",
+          "text": "u thr?"
+        },
+        {
+          "role": "self",
+          "text": "im here"
+        },
+        {
+          "role": "other",
+          "text": "k"
+        },
+        {
+          "role": "other",
+          "text": "tell me then"
+        },
+        {
+          "role": "other",
+          "text": "u r fine with my looks right?"
+        },
+        {
+          "role": "self",
+          "text": "oh yea your hot"
+        },
+        {
+          "role": "other",
+          "text": "so wht u thinking then"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-044",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "its like that lol"
+        },
+        {
+          "role": "self",
+          "text": "oh ok"
+        },
+        {
+          "role": "other",
+          "text": "thats about as much as it will hurt"
+        },
+        {
+          "role": "self",
+          "text": "oh ok thats not that bad"
+        },
+        {
+          "role": "other",
+          "text": "ya. maybe a little more.. but its the same kind of pain as that"
+        },
+        {
+          "role": "self",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": ":)"
+        },
+        {
+          "role": "other",
+          "text": "so you wont get me in trouble for fucking your ass really hard then right? lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-045",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "u wanna drink"
+        },
+        {
+          "role": "self",
+          "text": "ya"
+        },
+        {
+          "role": "other",
+          "text": "wut u drink"
+        },
+        {
+          "role": "self",
+          "text": "i like mikes :D"
+        },
+        {
+          "role": "other",
+          "text": "oh yea"
+        },
+        {
+          "role": "other",
+          "text": "well if u feel like chilln i can bring sum (A cookie for anyone who can define \"Chilln\" in this context and sound like a dictionary entry when doing so.  No joke, I was asked to define it.)"
+        },
+        {
+          "role": "self",
+          "text": "relly?"
+        },
+        {
+          "role": "self",
+          "text": "tat wuld b kewl"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-046",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "other",
+          "text": "to be honest"
+        },
+        {
+          "role": "other",
+          "text": "I really am attracted to you"
+        },
+        {
+          "role": "other",
+          "text": "if your a cop"
+        },
+        {
+          "role": "other",
+          "text": "looking for child mol;esters( Oh I so love it when they call themselves that.)"
+        },
+        {
+          "role": "other",
+          "text": "than let get it on"
+        },
+        {
+          "role": "self",
+          "text": "huh"
+        },
+        {
+          "role": "self",
+          "text": "i aint a cop"
+        },
+        {
+          "role": "other",
+          "text": "hon your 13"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-047",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "lol we'll see if it freaks me out"
+        },
+        {
+          "role": "other",
+          "text": ";)"
+        },
+        {
+          "role": "other",
+          "text": "tell her to leave already lol"
+        },
+        {
+          "role": "self",
+          "text": "yea i know shes gettin on my nerves"
+        },
+        {
+          "role": "self",
+          "text": "she doing the dishes but when shes done with that i think shes leaving"
+        },
+        {
+          "role": "other",
+          "text": "k"
+        },
+        {
+          "role": "other",
+          "text": "so you are wearing a dress and your old panties right"
+        },
+        {
+          "role": "self",
+          "text": "not right now lol i can change when she leaves"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-048",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "ok"
+        },
+        {
+          "role": "self",
+          "text": "shes gonna be gone this weekend"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "really"
+        },
+        {
+          "role": "other",
+          "text": "all weekend?"
+        },
+        {
+          "role": "self",
+          "text": "yea"
+        },
+        {
+          "role": "self",
+          "text": "yea"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-049",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "ok come back soon.."
+        },
+        {
+          "role": "other",
+          "text": "brb kutti.."
+        },
+        {
+          "role": "self",
+          "text": "im back sorry"
+        },
+        {
+          "role": "other",
+          "text": "hi im back"
+        },
+        {
+          "role": "self",
+          "text": "hi"
+        },
+        {
+          "role": "self",
+          "text": "i cant stay long"
+        },
+        {
+          "role": "other",
+          "text": "will you come online tomorrow?"
+        },
+        {
+          "role": "self",
+          "text": "i will try 2!"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-050",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "Mmm wish ur mom was  at work :/"
+        },
+        {
+          "role": "other",
+          "text": "I do idk about other ones"
+        },
+        {
+          "role": "self",
+          "text": "me tooo..hopefully she does tomorrow :)"
+        },
+        {
+          "role": "other",
+          "text": "Do u giv good head jw :)?"
+        },
+        {
+          "role": "self",
+          "text": "my ex never complained lol"
+        },
+        {
+          "role": "other",
+          "text": "Mmm u gana suck my big dick babe :)?"
+        },
+        {
+          "role": "self",
+          "text": "u want me to?lol"
+        },
+        {
+          "role": "other",
+          "text": "Hell ya if u want to :)"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-051",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": "i will shold you hun"
+        },
+        {
+          "role": "self",
+          "text": "u will?"
+        },
+        {
+          "role": "other",
+          "text": "yes"
+        },
+        {
+          "role": "other",
+          "text": "can we fuck (No shame at all.)"
+        },
+        {
+          "role": "self",
+          "text": "yea"
+        },
+        {
+          "role": "other",
+          "text": "kool"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-052",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "I mean your 14 u should give your virginity to someone your age who loves u 1:07 PM"
+        },
+        {
+          "role": "self",
+          "text": "ooook if thts wht u wuna do!:P 1:08 PM"
+        },
+        {
+          "role": "self",
+          "text": "ok i will then lol..i was jus curious wht its like 1:09 PM"
+        },
+        {
+          "role": "other",
+          "text": "OK But Why Not Have Sex With Someone Your age 1:11 PM"
+        },
+        {
+          "role": "self",
+          "text": "guys at my school r jerks n it would go around the whole school n ppl would probly call me a slut..if its someone nobodys knows then nobody would find out 1:13 PM"
+        },
+        {
+          "role": "other",
+          "text": "OK But Y Not Someone Your Age Who Doesn't Go To Your school 1:15 PM"
+        },
+        {
+          "role": "self",
+          "text": "idk any guys from diff schools besides my cousins lol 1:17 PM"
+        },
+        {
+          "role": "other",
+          "text": "Oh 1:18 PM"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-053",
+      "category": "location_probing",
+      "messages": [
+        {
+          "role": "self",
+          "text": "k i gtg eat shes buggin me"
+        },
+        {
+          "role": "other",
+          "text": "Ok baby. Hugs and kisses to you"
+        },
+        {
+          "role": "self",
+          "text": "hi"
+        },
+        {
+          "role": "other",
+          "text": "hello"
+        },
+        {
+          "role": "other",
+          "text": "How are you doing today?"
+        },
+        {
+          "role": "self",
+          "text": "not real good"
+        },
+        {
+          "role": "other",
+          "text": "tell me"
+        },
+        {
+          "role": "self",
+          "text": "my mom is coming to get me but we are not going home going to my aunts house"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "location_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-054",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "13.f.OH"
+        },
+        {
+          "role": "other",
+          "text": "thats cool...what part (so not cool really)"
+        },
+        {
+          "role": "self",
+          "text": "Greenville"
+        },
+        {
+          "role": "self",
+          "text": "u know where it is"
+        },
+        {
+          "role": "other",
+          "text": "yup"
+        },
+        {
+          "role": "other",
+          "text": "You have any pictures?"
+        },
+        {
+          "role": "self",
+          "text": "on my prof"
+        },
+        {
+          "role": "other",
+          "text": "oh...which one?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-055",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "self",
+          "text": "Sounds like fun"
+        },
+        {
+          "role": "other",
+          "text": "maybe we could take a hike or walk and I could photograph you outdoors..."
+        },
+        {
+          "role": "self",
+          "text": "Ya"
+        },
+        {
+          "role": "other",
+          "text": "it would be so fun"
+        },
+        {
+          "role": "self",
+          "text": "When?"
+        },
+        {
+          "role": "other",
+          "text": "soon hun...whenever I can get away for a 4 1/2 hour drive...."
+        },
+        {
+          "role": "self",
+          "text": "Oh"
+        },
+        {
+          "role": "other",
+          "text": "have you thought anymore about a plan to get to Atlanta this summer?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-056",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i'll wait for a bf"
+        },
+        {
+          "role": "other",
+          "text": "what do you dream about doing sexually with a bf?"
+        },
+        {
+          "role": "other",
+          "text": "what grade are you at now?"
+        },
+        {
+          "role": "self",
+          "text": "things he likes i never done it so dont know lots"
+        },
+        {
+          "role": "other",
+          "text": "good"
+        },
+        {
+          "role": "self",
+          "text": "8th grade"
+        },
+        {
+          "role": "other",
+          "text": "you are almost done with shcool?"
+        },
+        {
+          "role": "other",
+          "text": "!!!!"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-057",
+      "category": "contact_escalation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "listen, just call my house ph 1-800 collect when your mom leaves ok"
+        },
+        {
+          "role": "other",
+          "text": "not sure what I'll be driving"
+        },
+        {
+          "role": "self",
+          "text": "so u want me wanderin round in front of a church not knowin wat im lookin 4?"
+        },
+        {
+          "role": "other",
+          "text": "how many cars can there be in the church parking lot for you to worry about"
+        },
+        {
+          "role": "other",
+          "text": "and with a guy in one"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "no, I'll call you and I'll see ya walk'n up"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "contact_escalation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-058",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "no, thank YOU"
+        },
+        {
+          "role": "self",
+          "text": "for what?"
+        },
+        {
+          "role": "other",
+          "text": "putting up the picture! lol"
+        },
+        {
+          "role": "other",
+          "text": "sorry, I am being bad"
+        },
+        {
+          "role": "self",
+          "text": "no ur not"
+        },
+        {
+          "role": "self",
+          "text": "y u say that?"
+        },
+        {
+          "role": "other",
+          "text": "talking about your breasts (Yes, he's decided the water is fine, apparently.)"
+        },
+        {
+          "role": "self",
+          "text": ":P"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-059",
+      "category": "contact_escalation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "wish you where into watching cam"
+        },
+        {
+          "role": "self",
+          "text": "Can we just chat 4 min i like no u"
+        },
+        {
+          "role": "other",
+          "text": "sure"
+        },
+        {
+          "role": "other",
+          "text": "i wish that guy hadnt messed up yr life"
+        },
+        {
+          "role": "other",
+          "text": "by making you hav sex with him"
+        },
+        {
+          "role": "self",
+          "text": "yea he told me cuz he loved me"
+        },
+        {
+          "role": "other",
+          "text": "i dont know you well enough now to say that to you"
+        },
+        {
+          "role": "other",
+          "text": "but i would lioke to be a friend for now"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "contact_escalation",
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-060",
+      "category": "meeting_requests",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what and police cum out and bust me...lol"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "what?"
+        },
+        {
+          "role": "other",
+          "text": "what you wanna meet?"
+        },
+        {
+          "role": "self",
+          "text": "lol sure."
+        },
+        {
+          "role": "self",
+          "text": "u wanna?"
+        },
+        {
+          "role": "other",
+          "text": "hell yea you are hot"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "meeting_requests"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-061",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "dont miss me to much either )"
+        },
+        {
+          "role": "self",
+          "text": "kay"
+        },
+        {
+          "role": "other",
+          "text": "hehe"
+        },
+        {
+          "role": "other",
+          "text": "bye sweetness!"
+        },
+        {
+          "role": "other",
+          "text": ":-*"
+        },
+        {
+          "role": "other",
+          "text": "hi beautiful!"
+        },
+        {
+          "role": "self",
+          "text": "hi"
+        },
+        {
+          "role": "self",
+          "text": "how was ur turkey day?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-062",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "bikini ?"
+        },
+        {
+          "role": "self",
+          "text": "ya lol is that ok?"
+        },
+        {
+          "role": "other",
+          "text": "sure"
+        },
+        {
+          "role": "other",
+          "text": "id rather u have none on but im not there today"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "u asked"
+        },
+        {
+          "role": "other",
+          "text": "bra ?"
+        },
+        {
+          "role": "self",
+          "text": "no lol i took it off 2 b comfy"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-063",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "kool"
+        },
+        {
+          "role": "self",
+          "text": "lolo"
+        },
+        {
+          "role": "other",
+          "text": "so maybe we can hang out sometime"
+        },
+        {
+          "role": "self",
+          "text": "that would be kewl prolly what do u wanna do"
+        },
+        {
+          "role": "other",
+          "text": "hmm, i love movies"
+        },
+        {
+          "role": "other",
+          "text": "maybe watch a movie"
+        },
+        {
+          "role": "other",
+          "text": "anything"
+        },
+        {
+          "role": "other",
+          "text": "can i add u"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-064",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "self",
+          "text": "ok then i do 2"
+        },
+        {
+          "role": "self",
+          "text": "wut r u doing"
+        },
+        {
+          "role": "other",
+          "text": "u there"
+        },
+        {
+          "role": "self",
+          "text": "yah i heer"
+        },
+        {
+          "role": "other",
+          "text": "by the time i get there u would have to go home"
+        },
+        {
+          "role": "self",
+          "text": "y u say that"
+        },
+        {
+          "role": "other",
+          "text": "u cant stay out late"
+        },
+        {
+          "role": "self",
+          "text": "i can do wut i wanna"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-065",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i know i wanna find me a cool girl"
+        },
+        {
+          "role": "self",
+          "text": "yup"
+        },
+        {
+          "role": "other",
+          "text": "who knows you might be the one"
+        },
+        {
+          "role": "self",
+          "text": "awwww i bet u say that 2 every 1"
+        },
+        {
+          "role": "self",
+          "text": ":P"
+        },
+        {
+          "role": "other",
+          "text": "no not really"
+        },
+        {
+          "role": "self",
+          "text": "i wus jk"
+        },
+        {
+          "role": "self",
+          "text": "well u seem cool"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-066",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "idk lol"
+        },
+        {
+          "role": "self",
+          "text": "i got a tan tho"
+        },
+        {
+          "role": "other",
+          "text": "that's cool from the pool right?"
+        },
+        {
+          "role": "self",
+          "text": "yep"
+        },
+        {
+          "role": "other",
+          "text": "nice"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": ":-P"
+        },
+        {
+          "role": "self",
+          "text": "u know its not fair that guys can walk around with there shirts off but girls cant"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-067",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "oh why not"
+        },
+        {
+          "role": "other",
+          "text": "he should of"
+        },
+        {
+          "role": "self",
+          "text": "idk"
+        },
+        {
+          "role": "other",
+          "text": "i would of done it ( An offer? Almost, but not quite)"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "i think it feels good"
+        },
+        {
+          "role": "self",
+          "text": "kewl"
+        },
+        {
+          "role": "other",
+          "text": "yeap"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-068",
+      "category": "meeting_requests",
+      "messages": [
+        {
+          "role": "other",
+          "text": "think about this.. i will be all exicited during that travel.."
+        },
+        {
+          "role": "other",
+          "text": "thinking about you.."
+        },
+        {
+          "role": "self",
+          "text": "o yea?"
+        },
+        {
+          "role": "other",
+          "text": "yes emi.. the moment you say that your mom is not around and we can meet.."
+        },
+        {
+          "role": "other",
+          "text": "the first thing im going to do is to rent a nice car.. and start towards albany the heaven"
+        },
+        {
+          "role": "other",
+          "text": "towards princess Emily Catherine"
+        },
+        {
+          "role": "self",
+          "text": "katherine  :)"
+        },
+        {
+          "role": "self",
+          "text": "with a k lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "meeting_requests"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-069",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "you and my dad"
+        },
+        {
+          "role": "other",
+          "text": "yup"
+        },
+        {
+          "role": "self",
+          "text": "you shold go to bed soon lol"
+        },
+        {
+          "role": "other",
+          "text": "so should you...dont you have school?"
+        },
+        {
+          "role": "self",
+          "text": "lol yes"
+        },
+        {
+          "role": "self",
+          "text": "both of us shold go to bed lol"
+        },
+        {
+          "role": "other",
+          "text": "together? sounds like fun! haha j/k....ok i will"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-070",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": ";;)"
+        },
+        {
+          "role": "self",
+          "text": "uh huh"
+        },
+        {
+          "role": "self",
+          "text": "sure sure"
+        },
+        {
+          "role": "self",
+          "text": "that's why u've been ignoring me for ever"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "no,, your never on !"
+        },
+        {
+          "role": "self",
+          "text": "whatever"
+        },
+        {
+          "role": "self",
+          "text": "excuses excuses"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-071",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi, are you busy"
+        },
+        {
+          "role": "self",
+          "text": "not really"
+        },
+        {
+          "role": "self",
+          "text": "whats up"
+        },
+        {
+          "role": "self",
+          "text": "asl"
+        },
+        {
+          "role": "other",
+          "text": "im 29 m so cali"
+        },
+        {
+          "role": "self",
+          "text": "13f 562"
+        },
+        {
+          "role": "other",
+          "text": "13?"
+        },
+        {
+          "role": "self",
+          "text": "yea"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-072",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "other",
+          "text": "was there another guy hitting on my GF there babe"
+        },
+        {
+          "role": "self",
+          "text": "yea marcus something"
+        },
+        {
+          "role": "other",
+          "text": "really.what happened"
+        },
+        {
+          "role": "self",
+          "text": "his name marcusfuller"
+        },
+        {
+          "role": "self",
+          "text": "he some big black hiphop dude"
+        },
+        {
+          "role": "other",
+          "text": "really.well the next time some guy tries hitting on u babe just tell them that your taken on for real babe"
+        },
+        {
+          "role": "self",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": "so when are u going to try and call your BF here babe"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-073",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i don't think so"
+        },
+        {
+          "role": "other",
+          "text": "do you have more pics Beth? pweeze"
+        },
+        {
+          "role": "self",
+          "text": "no sowwy"
+        },
+        {
+          "role": "other",
+          "text": "had to ask :)"
+        },
+        {
+          "role": "self",
+          "text": "do u"
+        },
+        {
+          "role": "other",
+          "text": "if i did, you would already have them :)"
+        },
+        {
+          "role": "self",
+          "text": "kewl"
+        },
+        {
+          "role": "other",
+          "text": "no nudies :)"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-074",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "no"
+        },
+        {
+          "role": "self",
+          "text": "i want 1 but mom say no"
+        },
+        {
+          "role": "self",
+          "text": "do u have 1?"
+        },
+        {
+          "role": "other",
+          "text": "yes"
+        },
+        {
+          "role": "self",
+          "text": "kewl wahts his name? :)"
+        },
+        {
+          "role": "other",
+          "text": "rocky"
+        },
+        {
+          "role": "self",
+          "text": "i like taht :)"
+        },
+        {
+          "role": "other",
+          "text": ":) he loves playing around"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-075",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hehe forgot to ask huh? I was wondering when you would"
+        },
+        {
+          "role": "other",
+          "text": "Josh"
+        },
+        {
+          "role": "self",
+          "text": "you look like a Josh"
+        },
+        {
+          "role": "self",
+          "text": "whats my name smartie pants"
+        },
+        {
+          "role": "other",
+          "text": "Jessie"
+        },
+        {
+          "role": "self",
+          "text": "duh"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "yay"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-076",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "yeah"
+        },
+        {
+          "role": "other",
+          "text": "it's okay"
+        },
+        {
+          "role": "self",
+          "text": "wat u doin today"
+        },
+        {
+          "role": "self",
+          "text": "hello"
+        },
+        {
+          "role": "other",
+          "text": "nothin"
+        },
+        {
+          "role": "self",
+          "text": "how come"
+        },
+        {
+          "role": "other",
+          "text": "dunno"
+        },
+        {
+          "role": "other",
+          "text": "you?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-077",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "have u ever put ur fingers inside?"
+        },
+        {
+          "role": "self",
+          "text": "na"
+        },
+        {
+          "role": "other",
+          "text": "has a boy ever licked it?"
+        },
+        {
+          "role": "self",
+          "text": "no"
+        },
+        {
+          "role": "other",
+          "text": "u dont know what ur missin"
+        },
+        {
+          "role": "self",
+          "text": "kinda heard its cool"
+        },
+        {
+          "role": "other",
+          "text": "u would love it"
+        },
+        {
+          "role": "self",
+          "text": "oh lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-078",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "but ur file is not work"
+        },
+        {
+          "role": "self",
+          "text": "email it"
+        },
+        {
+          "role": "other",
+          "text": "do u have msn?"
+        },
+        {
+          "role": "self",
+          "text": "no"
+        },
+        {
+          "role": "self",
+          "text": "i gotta pee brb kk"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        },
+        {
+          "role": "self",
+          "text": "back"
+        },
+        {
+          "role": "other",
+          "text": "ok"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-079",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "AHH, OK"
+        },
+        {
+          "role": "other",
+          "text": "WELL WB"
+        },
+        {
+          "role": "self",
+          "text": "well i been like 10 mins?"
+        },
+        {
+          "role": "other",
+          "text": "BEEN THINKIN MUCH ABOUT WUT WE TALKED ABOUT..."
+        },
+        {
+          "role": "other",
+          "text": ";;)"
+        },
+        {
+          "role": "self",
+          "text": "yah"
+        },
+        {
+          "role": "other",
+          "text": "COOL"
+        },
+        {
+          "role": "other",
+          "text": "GOOD I HOPE"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-080",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "other",
+          "text": "NUTTIN"
+        },
+        {
+          "role": "other",
+          "text": "I BEEN MISSING U"
+        },
+        {
+          "role": "self",
+          "text": "miss u to"
+        },
+        {
+          "role": "self",
+          "text": ">:D<"
+        },
+        {
+          "role": "other",
+          "text": ">:D<"
+        },
+        {
+          "role": "self",
+          "text": "i didnt even rlly get to talk to u last week"
+        },
+        {
+          "role": "other",
+          "text": "I WAS IN SCHOOL"
+        },
+        {
+          "role": "other",
+          "text": "& HATED EVERY MINUTE OF IT"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-081",
+      "category": "meeting_requests",
+      "messages": [
+        {
+          "role": "self",
+          "text": "cool"
+        },
+        {
+          "role": "other",
+          "text": "then we can have sex ok"
+        },
+        {
+          "role": "self",
+          "text": "ok, well, mebbe we can discuss more like when and were. I need 2 get to bed cuz I have school in the morning"
+        },
+        {
+          "role": "other",
+          "text": "ok do u have a car"
+        },
+        {
+          "role": "self",
+          "text": "Lol no, i'm only 13"
+        },
+        {
+          "role": "self",
+          "text": "not old enuf to drive a car"
+        },
+        {
+          "role": "other",
+          "text": "ok i would have to pick u up some where"
+        },
+        {
+          "role": "self",
+          "text": "yeah"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "meeting_requests",
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-082",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "i thot u did"
+        },
+        {
+          "role": "other",
+          "text": "ikinda"
+        },
+        {
+          "role": "self",
+          "text": "the 7 11 is rite off of 75"
+        },
+        {
+          "role": "other",
+          "text": "koo"
+        },
+        {
+          "role": "self",
+          "text": "u kno bout where now"
+        },
+        {
+          "role": "other",
+          "text": "yea"
+        },
+        {
+          "role": "other",
+          "text": "u want me to go there now"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-083",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "yes, i have an older sister and an older brother. sister is 22 and brother is 29"
+        },
+        {
+          "role": "self",
+          "text": "thats cool i wish i did"
+        },
+        {
+          "role": "other",
+          "text": "hehe, why? arent you spoiled? :P"
+        },
+        {
+          "role": "self",
+          "text": "i wish LOL"
+        },
+        {
+          "role": "other",
+          "text": "haha"
+        },
+        {
+          "role": "other",
+          "text": "you dont like being an only child?"
+        },
+        {
+          "role": "self",
+          "text": "i dont no i ts ok i just think it would be cool to have some"
+        },
+        {
+          "role": "other",
+          "text": "yeah, its a lot of fun, and its more people to be close to, ya know? but i dont think being an only child would be too bad. i bet youre closer to your parents than people with siblings"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-084",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "wow.. i am so relieved now.."
+        },
+        {
+          "role": "other",
+          "text": "thanks emi"
+        },
+        {
+          "role": "self",
+          "text": "np ill call u soon i gotta go eat dinner now"
+        },
+        {
+          "role": "other",
+          "text": "ok.. catch you later then"
+        },
+        {
+          "role": "other",
+          "text": "bye"
+        },
+        {
+          "role": "self",
+          "text": "ok ill call u"
+        },
+        {
+          "role": "other",
+          "text": ":-)"
+        },
+        {
+          "role": "self",
+          "text": "talk 2 u soon"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-085",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "self",
+          "text": "have fun i gotta go"
+        },
+        {
+          "role": "self",
+          "text": "xoxo"
+        },
+        {
+          "role": "self",
+          "text": "see u tomorrow daddy"
+        },
+        {
+          "role": "self",
+          "text": ":)"
+        },
+        {
+          "role": "other",
+          "text": "Bye baby"
+        },
+        {
+          "role": "self",
+          "text": "bye daddy"
+        },
+        {
+          "role": "other",
+          "text": "I love you baby"
+        },
+        {
+          "role": "other",
+          "text": "You there?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-086",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi (Nice and benign.)"
+        },
+        {
+          "role": "self",
+          "text": "hiya"
+        },
+        {
+          "role": "other",
+          "text": "whats up"
+        },
+        {
+          "role": "self",
+          "text": "nm you?"
+        },
+        {
+          "role": "self",
+          "text": "asl?"
+        },
+        {
+          "role": "other",
+          "text": "26m wa"
+        },
+        {
+          "role": "self",
+          "text": "cool"
+        },
+        {
+          "role": "self",
+          "text": "13 f poulsbo"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-087",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "no why"
+        },
+        {
+          "role": "other",
+          "text": "no way"
+        },
+        {
+          "role": "self",
+          "text": "cuz u cant even talk"
+        },
+        {
+          "role": "other",
+          "text": "your no fun"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "i can talk"
+        },
+        {
+          "role": "other",
+          "text": "jesus fucking crhsidt"
+        },
+        {
+          "role": "other",
+          "text": "i can type"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-088",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "do u want to come late? like after midnite? the neigbors for sure wont see you then"
+        },
+        {
+          "role": "other",
+          "text": "maybe like 11"
+        },
+        {
+          "role": "self",
+          "text": "my next door neighbor gets home from work right then i think plus if u come at like 12:30 I can take a longer nap so im not sleepy when u are here"
+        },
+        {
+          "role": "self",
+          "text": "or you can come right now lol"
+        },
+        {
+          "role": "self",
+          "text": ":P"
+        },
+        {
+          "role": "other",
+          "text": "yeah thats a good idea"
+        },
+        {
+          "role": "self",
+          "text": "which?"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-089",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "how wud u do that?"
+        },
+        {
+          "role": "other",
+          "text": "how ever you wanted to"
+        },
+        {
+          "role": "self",
+          "text": "oh ya?"
+        },
+        {
+          "role": "other",
+          "text": "any thoughts"
+        },
+        {
+          "role": "self",
+          "text": "thats wat i jus askd u silly"
+        },
+        {
+          "role": "other",
+          "text": "ya ya"
+        },
+        {
+          "role": "self",
+          "text": "ur funny"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-090",
+      "category": "age_probing",
+      "messages": [
+        {
+          "role": "self",
+          "text": "idkkk lol im scared bout gettin prego"
+        },
+        {
+          "role": "self",
+          "text": "idkkk lol im scared bout gettin prego"
+        },
+        {
+          "role": "other",
+          "text": "I wont bust in u lol"
+        },
+        {
+          "role": "other",
+          "text": "Ill bust on ur sexy tummy"
+        },
+        {
+          "role": "other",
+          "text": ":)"
+        },
+        {
+          "role": "self",
+          "text": "u would have to wear a condom lol i dont wuna take the chance..my mom would kill me"
+        },
+        {
+          "role": "other",
+          "text": "Kk ill were one for u babe :)"
+        },
+        {
+          "role": "self",
+          "text": "im serious lol if we do then u have to"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "age_probing"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-091",
+      "category": "trust_building",
+      "messages": [
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "uh yeah"
+        },
+        {
+          "role": "self",
+          "text": "ur invis lol"
+        },
+        {
+          "role": "other",
+          "text": "i know"
+        },
+        {
+          "role": "self",
+          "text": "watcha doin?"
+        },
+        {
+          "role": "other",
+          "text": "just chillin lookin at ur cute pic"
+        },
+        {
+          "role": "other",
+          "text": "lol"
+        },
+        {
+          "role": "self",
+          "text": "aww ty"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "trust_building"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-092",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do tell"
+        },
+        {
+          "role": "other",
+          "text": "whats on your mind"
+        },
+        {
+          "role": "other",
+          "text": "ic"
+        },
+        {
+          "role": "self",
+          "text": "srry mom was talking 2 me"
+        },
+        {
+          "role": "other",
+          "text": "its ok"
+        },
+        {
+          "role": "other",
+          "text": "but you arent talkin"
+        },
+        {
+          "role": "other",
+          "text": "i think bout u every day"
+        },
+        {
+          "role": "self",
+          "text": "4 real?"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-093",
+      "category": "contact_escalation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "Me too. Call me in 5 minutes"
+        },
+        {
+          "role": "self",
+          "text": "ok"
+        },
+        {
+          "role": "other",
+          "text": "Actually 10. I have to get gas"
+        },
+        {
+          "role": "self",
+          "text": "ok daddy"
+        },
+        {
+          "role": "self",
+          "text": "how come ur not answering???"
+        },
+        {
+          "role": "other",
+          "text": "It didnt ring. Try again"
+        },
+        {
+          "role": "other",
+          "text": "Go outside. I'm here"
+        },
+        {
+          "role": "other",
+          "text": "Im here baby"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "contact_escalation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-094",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i havent gone all the way with ne1"
+        },
+        {
+          "role": "other",
+          "text": "So u still a virgin?"
+        },
+        {
+          "role": "self",
+          "text": "ya"
+        },
+        {
+          "role": "other",
+          "text": "Oh do u want to have sex? (He's still on sex and there's the slam dunk.)"
+        },
+        {
+          "role": "self",
+          "text": "would u wanna?"
+        },
+        {
+          "role": "other",
+          "text": "Why u ask me"
+        },
+        {
+          "role": "other",
+          "text": "U still a virgin"
+        },
+        {
+          "role": "self",
+          "text": "cuz i dont wanna if u dont wanna"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-095",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "ok that would be cool"
+        },
+        {
+          "role": "other",
+          "text": "Try to borrow a camra"
+        },
+        {
+          "role": "self",
+          "text": "u will? so u can take pics?"
+        },
+        {
+          "role": "other",
+          "text": "Wana c u naked"
+        },
+        {
+          "role": "other",
+          "text": "Want me to"
+        },
+        {
+          "role": "self",
+          "text": "u said u were gonna"
+        },
+        {
+          "role": "other",
+          "text": "Do you want me to"
+        },
+        {
+          "role": "other",
+          "text": "Ok i get one"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-096",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "kewl"
+        },
+        {
+          "role": "other",
+          "text": "thanks"
+        },
+        {
+          "role": "other",
+          "text": "well i will chat with you tomorrow then"
+        },
+        {
+          "role": "self",
+          "text": "k"
+        },
+        {
+          "role": "self",
+          "text": "wuz kewl talkin 2 u"
+        },
+        {
+          "role": "other",
+          "text": "you too"
+        },
+        {
+          "role": "self",
+          "text": "nite"
+        },
+        {
+          "role": "other",
+          "text": "nite"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-097",
+      "category": "general",
+      "messages": [
+        {
+          "role": "other",
+          "text": "nice name destiny"
+        },
+        {
+          "role": "other",
+          "text": "so wut kinda dog waz in yo pic"
+        },
+        {
+          "role": "self",
+          "text": "itz a chihuahua mix lol"
+        },
+        {
+          "role": "other",
+          "text": "i hate dem lil mothefuckers (Well it would be nice if we had one so it could scare you off.)"
+        },
+        {
+          "role": "other",
+          "text": "so y u so quiet"
+        },
+        {
+          "role": "self",
+          "text": "lol cuz u r"
+        },
+        {
+          "role": "other",
+          "text": "im talking"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-098",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "kinda far"
+        },
+        {
+          "role": "other",
+          "text": "i see"
+        },
+        {
+          "role": "self",
+          "text": "cuz idk where taht is"
+        },
+        {
+          "role": "self",
+          "text": "lol"
+        },
+        {
+          "role": "other",
+          "text": "i know where is 15 st"
+        },
+        {
+          "role": "self",
+          "text": "itz lik rite of of 75"
+        },
+        {
+          "role": "other",
+          "text": "oh"
+        },
+        {
+          "role": "other",
+          "text": "i see"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-099",
+      "category": "explicit_solicitation",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i just want to eat it lick it slide my tung in side it then pund it"
+        },
+        {
+          "role": "self",
+          "text": "lol okay"
+        },
+        {
+          "role": "other",
+          "text": "have you ever had it pounded"
+        },
+        {
+          "role": "self",
+          "text": "not yet"
+        },
+        {
+          "role": "other",
+          "text": "damn that not only gets the gspot but its stimulates the clit to"
+        },
+        {
+          "role": "self",
+          "text": "cool"
+        },
+        {
+          "role": "other",
+          "text": "have you ever been camping or wanted to go and maby skiny didpin"
+        },
+        {
+          "role": "self",
+          "text": "ive gone camping and no i havent done that but it sounds neat"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "explicit_solicitation"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-100",
+      "category": "general",
+      "messages": [
+        {
+          "role": "self",
+          "text": "hey"
+        },
+        {
+          "role": "self",
+          "text": "i see u in chat lol"
+        },
+        {
+          "role": "self",
+          "text": "how u doin?"
+        },
+        {
+          "role": "self",
+          "text": "nite"
+        },
+        {
+          "role": "self",
+          "text": "hey u"
+        },
+        {
+          "role": "self",
+          "text": "hey u here?"
+        },
+        {
+          "role": "other",
+          "text": "hey sexy"
+        },
+        {
+          "role": "self",
+          "text": "hey"
+        }
+      ],
+      "expected": {
+        "is_grooming": true,
+        "stages": [
+          "general"
+        ],
+        "min_severity": 0.5
+      }
+    },
+    {
+      "id": "groom-101",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you have any plans for halloween"
+        },
+        {
+          "role": "self",
+          "text": "im going trick or treating with my friends"
+        },
+        {
+          "role": "other",
+          "text": "what are you dressing up as"
+        },
+        {
+          "role": "self",
+          "text": "a zombie i made the costume myself"
+        },
+        {
+          "role": "other",
+          "text": "thats awesome homemade costumes are the best"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-102",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you watch that movie last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah it was so funny"
+        },
+        {
+          "role": "other",
+          "text": "the part where he fell was hilarious"
+        },
+        {
+          "role": "self",
+          "text": "i know i was laughing so hard"
+        },
+        {
+          "role": "other",
+          "text": "we should watch the sequel"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-103",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you going to practice today"
+        },
+        {
+          "role": "self",
+          "text": "yeah coach said we have a scrimmage"
+        },
+        {
+          "role": "other",
+          "text": "nice i hope i get to play forward"
+        },
+        {
+          "role": "self",
+          "text": "you probably will youre the best on the team"
+        },
+        {
+          "role": "other",
+          "text": "thanks lol see you there"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-104",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my parents said i can get a cat"
+        },
+        {
+          "role": "self",
+          "text": "omg really thats amazing"
+        },
+        {
+          "role": "other",
+          "text": "we are going to the shelter saturday"
+        },
+        {
+          "role": "self",
+          "text": "send me pics when you pick one"
+        },
+        {
+          "role": "other",
+          "text": "i will im so excited"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-105",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you sign up for the school play"
+        },
+        {
+          "role": "self",
+          "text": "yeah i got a small part"
+        },
+        {
+          "role": "other",
+          "text": "thats awesome which character"
+        },
+        {
+          "role": "self",
+          "text": "just a village person but its fun"
+        },
+        {
+          "role": "other",
+          "text": "cool ill come watch you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-106",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my parents said i can get a cat"
+        },
+        {
+          "role": "self",
+          "text": "omg really thats amazing"
+        },
+        {
+          "role": "other",
+          "text": "we are going to the shelter saturday"
+        },
+        {
+          "role": "self",
+          "text": "send me pics when you pick one"
+        },
+        {
+          "role": "other",
+          "text": "i will im so excited"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-107",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my computer is so slow"
+        },
+        {
+          "role": "self",
+          "text": "try closing some tabs"
+        },
+        {
+          "role": "other",
+          "text": "i have like 50 open lol"
+        },
+        {
+          "role": "self",
+          "text": "thats your problem close the ones you dont need"
+        },
+        {
+          "role": "other",
+          "text": "but what if i need them later"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-108",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "happy birthday"
+        },
+        {
+          "role": "self",
+          "text": "thanks im so excited"
+        },
+        {
+          "role": "other",
+          "text": "what did you get"
+        },
+        {
+          "role": "self",
+          "text": "a new bike its blue"
+        },
+        {
+          "role": "other",
+          "text": "awesome we should go riding"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-109",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my dog learned a new trick"
+        },
+        {
+          "role": "self",
+          "text": "omg what trick"
+        },
+        {
+          "role": "other",
+          "text": "she can shake hands now"
+        },
+        {
+          "role": "self",
+          "text": "thats so cute i wish i had a dog"
+        },
+        {
+          "role": "other",
+          "text": "you should ask your parents"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-110",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how are your grades this semester"
+        },
+        {
+          "role": "self",
+          "text": "pretty good mostly As and Bs"
+        },
+        {
+          "role": "other",
+          "text": "thats great keep it up"
+        },
+        {
+          "role": "self",
+          "text": "thanks math is still hard though"
+        },
+        {
+          "role": "other",
+          "text": "we can work on that during our next tutoring session"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-111",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what did you get for the science quiz"
+        },
+        {
+          "role": "self",
+          "text": "i got a B i think"
+        },
+        {
+          "role": "other",
+          "text": "nice i barely passed lol"
+        },
+        {
+          "role": "self",
+          "text": "we should study together next time"
+        },
+        {
+          "role": "other",
+          "text": "yeah that would help"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-112",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "dont forget to text me when you get to school"
+        },
+        {
+          "role": "self",
+          "text": "i know mom you say that every day"
+        },
+        {
+          "role": "other",
+          "text": "because i worry about you"
+        },
+        {
+          "role": "self",
+          "text": "im fine the bus is right on time"
+        },
+        {
+          "role": "other",
+          "text": "ok have a good day love you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-113",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "have you seen the new marvel movie"
+        },
+        {
+          "role": "self",
+          "text": "not yet is it good"
+        },
+        {
+          "role": "other",
+          "text": "its the best one yet no spoilers"
+        },
+        {
+          "role": "self",
+          "text": "ok dont tell me anything im going this weekend"
+        },
+        {
+          "role": "other",
+          "text": "your gonna love it trust me"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-114",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "class remember to ask your parents to sign the field trip form"
+        },
+        {
+          "role": "self",
+          "text": "whens it due"
+        },
+        {
+          "role": "other",
+          "text": "by friday or you cant go"
+        },
+        {
+          "role": "self",
+          "text": "ok ill get it signed tonight"
+        },
+        {
+          "role": "other",
+          "text": "great dont forget"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-115",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you ok you seemed upset today"
+        },
+        {
+          "role": "self",
+          "text": "yeah just had a bad day"
+        },
+        {
+          "role": "other",
+          "text": "want to talk about it"
+        },
+        {
+          "role": "self",
+          "text": "not really but thanks for asking"
+        },
+        {
+          "role": "other",
+          "text": "ok im here if you need me"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-116",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my mom made cookies want some"
+        },
+        {
+          "role": "self",
+          "text": "yes please what kind"
+        },
+        {
+          "role": "other",
+          "text": "chocolate chip the best kind"
+        },
+        {
+          "role": "self",
+          "text": "ill come over after school"
+        },
+        {
+          "role": "other",
+          "text": "ok ill save you some"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-117",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i just got the new zelda game"
+        },
+        {
+          "role": "self",
+          "text": "is it good"
+        },
+        {
+          "role": "other",
+          "text": "its amazing you should get it"
+        },
+        {
+          "role": "self",
+          "text": "maybe for my birthday"
+        },
+        {
+          "role": "other",
+          "text": "thats coming up right"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-118",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what are you doing this weekend"
+        },
+        {
+          "role": "self",
+          "text": "going to my grandmas house"
+        },
+        {
+          "role": "other",
+          "text": "oh fun tell her i said hi"
+        },
+        {
+          "role": "self",
+          "text": "haha ok will do"
+        },
+        {
+          "role": "other",
+          "text": "see you monday"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-119",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you have any plans for halloween"
+        },
+        {
+          "role": "self",
+          "text": "im going trick or treating with my friends"
+        },
+        {
+          "role": "other",
+          "text": "what are you dressing up as"
+        },
+        {
+          "role": "self",
+          "text": "a zombie i made the costume myself"
+        },
+        {
+          "role": "other",
+          "text": "thats awesome homemade costumes are the best"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-120",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my dog learned a new trick"
+        },
+        {
+          "role": "self",
+          "text": "omg what trick"
+        },
+        {
+          "role": "other",
+          "text": "she can shake hands now"
+        },
+        {
+          "role": "self",
+          "text": "thats so cute i wish i had a dog"
+        },
+        {
+          "role": "other",
+          "text": "you should ask your parents"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-121",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you see the new fortnite update"
+        },
+        {
+          "role": "self",
+          "text": "yeah the new map is awesome"
+        },
+        {
+          "role": "other",
+          "text": "we should play duos"
+        },
+        {
+          "role": "self",
+          "text": "im down maybe this weekend"
+        },
+        {
+          "role": "other",
+          "text": "sounds good"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-122",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you see the new fortnite update"
+        },
+        {
+          "role": "self",
+          "text": "yeah the new map is awesome"
+        },
+        {
+          "role": "other",
+          "text": "we should play duos"
+        },
+        {
+          "role": "self",
+          "text": "im down maybe this weekend"
+        },
+        {
+          "role": "other",
+          "text": "sounds good"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-123",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "guess what happened at lunch today"
+        },
+        {
+          "role": "self",
+          "text": "what"
+        },
+        {
+          "role": "other",
+          "text": "jake spilled his milk all over the table"
+        },
+        {
+          "role": "self",
+          "text": "haha no way everyone must have laughed"
+        },
+        {
+          "role": "other",
+          "text": "he was so embarrassed but it was funny"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-124",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you going to practice today"
+        },
+        {
+          "role": "self",
+          "text": "yeah coach said we have a scrimmage"
+        },
+        {
+          "role": "other",
+          "text": "nice i hope i get to play forward"
+        },
+        {
+          "role": "self",
+          "text": "you probably will youre the best on the team"
+        },
+        {
+          "role": "other",
+          "text": "thanks lol see you there"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-125",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you know how to use google slides"
+        },
+        {
+          "role": "self",
+          "text": "yeah its pretty easy what do you need help with"
+        },
+        {
+          "role": "other",
+          "text": "i cant figure out how to add pictures"
+        },
+        {
+          "role": "self",
+          "text": "click insert then image then upload from computer"
+        },
+        {
+          "role": "other",
+          "text": "oh got it thanks youre a lifesaver"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-126",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you going on the field trip friday"
+        },
+        {
+          "role": "self",
+          "text": "yeah my mom signed the permission slip"
+        },
+        {
+          "role": "other",
+          "text": "same its going to be so fun"
+        },
+        {
+          "role": "self",
+          "text": "i heard we get to see the dinosaur exhibit"
+        },
+        {
+          "role": "other",
+          "text": "thats the best part of the museum"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-127",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how old is your minecraft world"
+        },
+        {
+          "role": "self",
+          "text": "like 2 years now i built a whole city"
+        },
+        {
+          "role": "other",
+          "text": "thats so cool can i see it"
+        },
+        {
+          "role": "self",
+          "text": "yeah join my server tonight"
+        },
+        {
+          "role": "other",
+          "text": "send me the ip in our group chat"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-128",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hey whats up"
+        },
+        {
+          "role": "self",
+          "text": "not much just chilling"
+        },
+        {
+          "role": "other",
+          "text": "same im so bored"
+        },
+        {
+          "role": "self",
+          "text": "want to facetime"
+        },
+        {
+          "role": "other",
+          "text": "sure let me finish eating first"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-129",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i tried to bake a cake and it turned out terrible"
+        },
+        {
+          "role": "self",
+          "text": "what happened"
+        },
+        {
+          "role": "other",
+          "text": "i forgot the eggs lol"
+        },
+        {
+          "role": "self",
+          "text": "how do you forget the eggs thats like the main thing"
+        },
+        {
+          "role": "other",
+          "text": "i dont know it was my first time baking"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-130",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "class remember to ask your parents to sign the field trip form"
+        },
+        {
+          "role": "self",
+          "text": "whens it due"
+        },
+        {
+          "role": "other",
+          "text": "by friday or you cant go"
+        },
+        {
+          "role": "self",
+          "text": "ok ill get it signed tonight"
+        },
+        {
+          "role": "other",
+          "text": "great dont forget"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-131",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "have you thought about what you want to be when you grow up"
+        },
+        {
+          "role": "self",
+          "text": "i think i want to be a veterinarian"
+        },
+        {
+          "role": "other",
+          "text": "thats a great choice you love animals"
+        },
+        {
+          "role": "self",
+          "text": "yeah i volunteer at the shelter on weekends"
+        },
+        {
+          "role": "other",
+          "text": "that kind of experience will help with college applications"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-132",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi how can i help you today"
+        },
+        {
+          "role": "self",
+          "text": "i need to return something i bought"
+        },
+        {
+          "role": "other",
+          "text": "sure whats your order number"
+        },
+        {
+          "role": "self",
+          "text": "its 12345 i bought it last week"
+        },
+        {
+          "role": "other",
+          "text": "got it ill process that return for you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-133",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "the book report is due thursday"
+        },
+        {
+          "role": "self",
+          "text": "i havent even picked a book yet"
+        },
+        {
+          "role": "other",
+          "text": "you should read hatchet its short"
+        },
+        {
+          "role": "self",
+          "text": "good idea i need something i can finish fast"
+        },
+        {
+          "role": "other",
+          "text": "its really good too youll like it"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-134",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my dog learned a new trick"
+        },
+        {
+          "role": "self",
+          "text": "omg what trick"
+        },
+        {
+          "role": "other",
+          "text": "she can shake hands now"
+        },
+        {
+          "role": "self",
+          "text": "thats so cute i wish i had a dog"
+        },
+        {
+          "role": "other",
+          "text": "you should ask your parents"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-135",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you ok you seemed upset today"
+        },
+        {
+          "role": "self",
+          "text": "yeah just had a bad day"
+        },
+        {
+          "role": "other",
+          "text": "want to talk about it"
+        },
+        {
+          "role": "self",
+          "text": "not really but thanks for asking"
+        },
+        {
+          "role": "other",
+          "text": "ok im here if you need me"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-136",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you see the game last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah that last second shot was insane"
+        },
+        {
+          "role": "other",
+          "text": "i was screaming when it went in"
+        },
+        {
+          "role": "self",
+          "text": "same my dad told me to quiet down haha"
+        },
+        {
+          "role": "other",
+          "text": "worth it though best game all season"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-137",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what are you doing this weekend"
+        },
+        {
+          "role": "self",
+          "text": "going to my grandmas house"
+        },
+        {
+          "role": "other",
+          "text": "oh fun tell her i said hi"
+        },
+        {
+          "role": "self",
+          "text": "haha ok will do"
+        },
+        {
+          "role": "other",
+          "text": "see you monday"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-138",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hey did you finish the math homework"
+        },
+        {
+          "role": "self",
+          "text": "not yet its really hard"
+        },
+        {
+          "role": "other",
+          "text": "same i got stuck on problem 5"
+        },
+        {
+          "role": "self",
+          "text": "me too lets ask the teacher tomorrow"
+        },
+        {
+          "role": "other",
+          "text": "good idea see you in class"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-139",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "whats your rank in rocket league"
+        },
+        {
+          "role": "self",
+          "text": "im gold 3 almost platinum"
+        },
+        {
+          "role": "other",
+          "text": "nice im plat 1 we could duo queue"
+        },
+        {
+          "role": "self",
+          "text": "that would be fun lets try tomorrow"
+        },
+        {
+          "role": "other",
+          "text": "ok ill be on around 4"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-140",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my dog learned a new trick"
+        },
+        {
+          "role": "self",
+          "text": "omg what trick"
+        },
+        {
+          "role": "other",
+          "text": "she can shake hands now"
+        },
+        {
+          "role": "self",
+          "text": "thats so cute i wish i had a dog"
+        },
+        {
+          "role": "other",
+          "text": "you should ask your parents"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-141",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what do you want for lunch"
+        },
+        {
+          "role": "self",
+          "text": "can we get pizza"
+        },
+        {
+          "role": "other",
+          "text": "we had pizza yesterday how about sandwiches"
+        },
+        {
+          "role": "self",
+          "text": "fine but can i have chips too"
+        },
+        {
+          "role": "other",
+          "text": "deal"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-142",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "dont forget to text me when you get to school"
+        },
+        {
+          "role": "self",
+          "text": "i know mom you say that every day"
+        },
+        {
+          "role": "other",
+          "text": "because i worry about you"
+        },
+        {
+          "role": "self",
+          "text": "im fine the bus is right on time"
+        },
+        {
+          "role": "other",
+          "text": "ok have a good day love you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-143",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi how can i help you today"
+        },
+        {
+          "role": "self",
+          "text": "i need to return something i bought"
+        },
+        {
+          "role": "other",
+          "text": "sure whats your order number"
+        },
+        {
+          "role": "self",
+          "text": "its 12345 i bought it last week"
+        },
+        {
+          "role": "other",
+          "text": "got it ill process that return for you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-144",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my computer is so slow"
+        },
+        {
+          "role": "self",
+          "text": "try closing some tabs"
+        },
+        {
+          "role": "other",
+          "text": "i have like 50 open lol"
+        },
+        {
+          "role": "self",
+          "text": "thats your problem close the ones you dont need"
+        },
+        {
+          "role": "other",
+          "text": "but what if i need them later"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-145",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you see the game last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah that last second shot was insane"
+        },
+        {
+          "role": "other",
+          "text": "i was screaming when it went in"
+        },
+        {
+          "role": "self",
+          "text": "same my dad told me to quiet down haha"
+        },
+        {
+          "role": "other",
+          "text": "worth it though best game all season"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-146",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "have you seen the new marvel movie"
+        },
+        {
+          "role": "self",
+          "text": "not yet is it good"
+        },
+        {
+          "role": "other",
+          "text": "its the best one yet no spoilers"
+        },
+        {
+          "role": "self",
+          "text": "ok dont tell me anything im going this weekend"
+        },
+        {
+          "role": "other",
+          "text": "your gonna love it trust me"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-147",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "where are you right now"
+        },
+        {
+          "role": "self",
+          "text": "im at sarahs house we are doing homework"
+        },
+        {
+          "role": "other",
+          "text": "ok be home by dinner"
+        },
+        {
+          "role": "self",
+          "text": "what time is dinner"
+        },
+        {
+          "role": "other",
+          "text": "6 oclock dont be late"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-148",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you watch that movie last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah it was so funny"
+        },
+        {
+          "role": "other",
+          "text": "the part where he fell was hilarious"
+        },
+        {
+          "role": "self",
+          "text": "i know i was laughing so hard"
+        },
+        {
+          "role": "other",
+          "text": "we should watch the sequel"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-149",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my mom made cookies want some"
+        },
+        {
+          "role": "self",
+          "text": "yes please what kind"
+        },
+        {
+          "role": "other",
+          "text": "chocolate chip the best kind"
+        },
+        {
+          "role": "self",
+          "text": "ill come over after school"
+        },
+        {
+          "role": "other",
+          "text": "ok ill save you some"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-150",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi how can i help you today"
+        },
+        {
+          "role": "self",
+          "text": "i need to return something i bought"
+        },
+        {
+          "role": "other",
+          "text": "sure whats your order number"
+        },
+        {
+          "role": "self",
+          "text": "its 12345 i bought it last week"
+        },
+        {
+          "role": "other",
+          "text": "got it ill process that return for you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-151",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you coming to the party saturday"
+        },
+        {
+          "role": "self",
+          "text": "yeah my parents said i can go"
+        },
+        {
+          "role": "other",
+          "text": "great everyone from class will be there"
+        },
+        {
+          "role": "self",
+          "text": "do i need to bring anything"
+        },
+        {
+          "role": "other",
+          "text": "just yourself lol its gonna be fun"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-152",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you have any plans for halloween"
+        },
+        {
+          "role": "self",
+          "text": "im going trick or treating with my friends"
+        },
+        {
+          "role": "other",
+          "text": "what are you dressing up as"
+        },
+        {
+          "role": "self",
+          "text": "a zombie i made the costume myself"
+        },
+        {
+          "role": "other",
+          "text": "thats awesome homemade costumes are the best"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-153",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi how can i help you today"
+        },
+        {
+          "role": "self",
+          "text": "i need to return something i bought"
+        },
+        {
+          "role": "other",
+          "text": "sure whats your order number"
+        },
+        {
+          "role": "self",
+          "text": "its 12345 i bought it last week"
+        },
+        {
+          "role": "other",
+          "text": "got it ill process that return for you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-154",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "we are going camping next week"
+        },
+        {
+          "role": "self",
+          "text": "thats so fun where"
+        },
+        {
+          "role": "other",
+          "text": "the state park about 2 hours away"
+        },
+        {
+          "role": "self",
+          "text": "are you bringing smores stuff"
+        },
+        {
+          "role": "other",
+          "text": "obviously thats the best part of camping"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-155",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "did you see the game last night"
+        },
+        {
+          "role": "self",
+          "text": "yeah that last second shot was insane"
+        },
+        {
+          "role": "other",
+          "text": "i was screaming when it went in"
+        },
+        {
+          "role": "self",
+          "text": "same my dad told me to quiet down haha"
+        },
+        {
+          "role": "other",
+          "text": "worth it though best game all season"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-156",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "its supposed to snow tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "do you think school will be canceled"
+        },
+        {
+          "role": "other",
+          "text": "i hope so they said 6 inches"
+        },
+        {
+          "role": "self",
+          "text": "we should go sledding if it does"
+        },
+        {
+          "role": "other",
+          "text": "yes the hill by the park is the best"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-157",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "its supposed to snow tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "do you think school will be canceled"
+        },
+        {
+          "role": "other",
+          "text": "i hope so they said 6 inches"
+        },
+        {
+          "role": "self",
+          "text": "we should go sledding if it does"
+        },
+        {
+          "role": "other",
+          "text": "yes the hill by the park is the best"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-158",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hey whats up"
+        },
+        {
+          "role": "self",
+          "text": "not much just chilling"
+        },
+        {
+          "role": "other",
+          "text": "same im so bored"
+        },
+        {
+          "role": "self",
+          "text": "want to facetime"
+        },
+        {
+          "role": "other",
+          "text": "sure let me finish eating first"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-159",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "your essay was really mature for your age"
+        },
+        {
+          "role": "self",
+          "text": "thank you i worked really hard on it"
+        },
+        {
+          "role": "other",
+          "text": "you should enter it in the writing contest"
+        },
+        {
+          "role": "self",
+          "text": "really you think its good enough"
+        },
+        {
+          "role": "other",
+          "text": "absolutely your parents should be proud"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-160",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "where do you live is it close to the school"
+        },
+        {
+          "role": "self",
+          "text": "yeah just like 5 minutes away on maple street"
+        },
+        {
+          "role": "other",
+          "text": "nice i live on oak avenue so we could walk together"
+        },
+        {
+          "role": "self",
+          "text": "that would be cool we take the same route"
+        },
+        {
+          "role": "other",
+          "text": "ill meet you at the corner tomorrow morning"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-161",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "happy birthday"
+        },
+        {
+          "role": "self",
+          "text": "thanks im so excited"
+        },
+        {
+          "role": "other",
+          "text": "what did you get"
+        },
+        {
+          "role": "self",
+          "text": "a new bike its blue"
+        },
+        {
+          "role": "other",
+          "text": "awesome we should go riding"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-162",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my parents said i can get a cat"
+        },
+        {
+          "role": "self",
+          "text": "omg really thats amazing"
+        },
+        {
+          "role": "other",
+          "text": "we are going to the shelter saturday"
+        },
+        {
+          "role": "self",
+          "text": "send me pics when you pick one"
+        },
+        {
+          "role": "other",
+          "text": "i will im so excited"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-163",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "our teacher is so strict about late work"
+        },
+        {
+          "role": "self",
+          "text": "i know she took off 10 points from mine"
+        },
+        {
+          "role": "other",
+          "text": "that happened to me too last week"
+        },
+        {
+          "role": "self",
+          "text": "we should just turn stuff in early"
+        },
+        {
+          "role": "other",
+          "text": "easier said than done haha"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-164",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how old are you i forgot"
+        },
+        {
+          "role": "self",
+          "text": "im 13 my birthday was last month"
+        },
+        {
+          "role": "other",
+          "text": "oh right happy belated birthday"
+        },
+        {
+          "role": "self",
+          "text": "thanks we had a pool party"
+        },
+        {
+          "role": "other",
+          "text": "that sounds fun wish i could have come"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-165",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i cant believe we have a test tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "i know i havent studied at all"
+        },
+        {
+          "role": "other",
+          "text": "me neither want to study together on the phone"
+        },
+        {
+          "role": "self",
+          "text": "yeah call me in like 30 minutes"
+        },
+        {
+          "role": "other",
+          "text": "ok talk soon"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-166",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "its supposed to snow tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "do you think school will be canceled"
+        },
+        {
+          "role": "other",
+          "text": "i hope so they said 6 inches"
+        },
+        {
+          "role": "self",
+          "text": "we should go sledding if it does"
+        },
+        {
+          "role": "other",
+          "text": "yes the hill by the park is the best"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-167",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "gg that was a good game"
+        },
+        {
+          "role": "self",
+          "text": "you carried the team honestly"
+        },
+        {
+          "role": "other",
+          "text": "nah you had some sick plays too"
+        },
+        {
+          "role": "self",
+          "text": "one more round before bed"
+        },
+        {
+          "role": "other",
+          "text": "ok last one though i have school tomorrow"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-168",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "its supposed to snow tomorrow"
+        },
+        {
+          "role": "self",
+          "text": "do you think school will be canceled"
+        },
+        {
+          "role": "other",
+          "text": "i hope so they said 6 inches"
+        },
+        {
+          "role": "self",
+          "text": "we should go sledding if it does"
+        },
+        {
+          "role": "other",
+          "text": "yes the hill by the park is the best"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-169",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "add me on snap so we can send memes"
+        },
+        {
+          "role": "self",
+          "text": "whats your username"
+        },
+        {
+          "role": "other",
+          "text": "funnymemes2023"
+        },
+        {
+          "role": "self",
+          "text": "ok added you check your requests"
+        },
+        {
+          "role": "other",
+          "text": "got it sending you the funniest one right now"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-170",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "summer break is almost here"
+        },
+        {
+          "role": "self",
+          "text": "i cant wait only 2 more weeks"
+        },
+        {
+          "role": "other",
+          "text": "are you going anywhere"
+        },
+        {
+          "role": "self",
+          "text": "we might go to the beach"
+        },
+        {
+          "role": "other",
+          "text": "lucky im just staying home"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-171",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how are your grades this semester"
+        },
+        {
+          "role": "self",
+          "text": "pretty good mostly As and Bs"
+        },
+        {
+          "role": "other",
+          "text": "thats great keep it up"
+        },
+        {
+          "role": "self",
+          "text": "thanks math is still hard though"
+        },
+        {
+          "role": "other",
+          "text": "we can work on that during our next tutoring session"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-172",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you home from school yet"
+        },
+        {
+          "role": "self",
+          "text": "yeah just got home"
+        },
+        {
+          "role": "other",
+          "text": "ok start your homework ill be home by 5"
+        },
+        {
+          "role": "self",
+          "text": "can i have a snack first"
+        },
+        {
+          "role": "other",
+          "text": "yes theres fruit on the counter love you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-173",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my dog learned a new trick"
+        },
+        {
+          "role": "self",
+          "text": "omg what trick"
+        },
+        {
+          "role": "other",
+          "text": "she can shake hands now"
+        },
+        {
+          "role": "self",
+          "text": "thats so cute i wish i had a dog"
+        },
+        {
+          "role": "other",
+          "text": "you should ask your parents"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-174",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hey did you finish the math homework"
+        },
+        {
+          "role": "self",
+          "text": "not yet its really hard"
+        },
+        {
+          "role": "other",
+          "text": "same i got stuck on problem 5"
+        },
+        {
+          "role": "self",
+          "text": "me too lets ask the teacher tomorrow"
+        },
+        {
+          "role": "other",
+          "text": "good idea see you in class"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-175",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "my dog learned a new trick"
+        },
+        {
+          "role": "self",
+          "text": "omg what trick"
+        },
+        {
+          "role": "other",
+          "text": "she can shake hands now"
+        },
+        {
+          "role": "self",
+          "text": "thats so cute i wish i had a dog"
+        },
+        {
+          "role": "other",
+          "text": "you should ask your parents"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-176",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i just got the new zelda game"
+        },
+        {
+          "role": "self",
+          "text": "is it good"
+        },
+        {
+          "role": "other",
+          "text": "its amazing you should get it"
+        },
+        {
+          "role": "self",
+          "text": "maybe for my birthday"
+        },
+        {
+          "role": "other",
+          "text": "thats coming up right"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-177",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what do you want for lunch"
+        },
+        {
+          "role": "self",
+          "text": "can we get pizza"
+        },
+        {
+          "role": "other",
+          "text": "we had pizza yesterday how about sandwiches"
+        },
+        {
+          "role": "self",
+          "text": "fine but can i have chips too"
+        },
+        {
+          "role": "other",
+          "text": "deal"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-178",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what did you get for the science quiz"
+        },
+        {
+          "role": "self",
+          "text": "i got a B i think"
+        },
+        {
+          "role": "other",
+          "text": "nice i barely passed lol"
+        },
+        {
+          "role": "self",
+          "text": "we should study together next time"
+        },
+        {
+          "role": "other",
+          "text": "yeah that would help"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-179",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you know how to use google slides"
+        },
+        {
+          "role": "self",
+          "text": "yeah its pretty easy what do you need help with"
+        },
+        {
+          "role": "other",
+          "text": "i cant figure out how to add pictures"
+        },
+        {
+          "role": "self",
+          "text": "click insert then image then upload from computer"
+        },
+        {
+          "role": "other",
+          "text": "oh got it thanks youre a lifesaver"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-180",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "other",
+          "text": "happy birthday"
+        },
+        {
+          "role": "self",
+          "text": "thanks im so excited"
+        },
+        {
+          "role": "other",
+          "text": "what did you get"
+        },
+        {
+          "role": "self",
+          "text": "a new bike its blue"
+        },
+        {
+          "role": "other",
+          "text": "awesome we should go riding"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-181",
+      "category": "safe_sports_coaching",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hey how old are you? im trying to set up the age groups for the soccer league"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-182",
+      "category": "safe_teacher_student",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what grade are you in? we need to know for the reading level assessment"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-183",
+      "category": "safe_sports_coaching",
+      "messages": [
+        {
+          "role": "other",
+          "text": "where do you live? im making the carpool schedule for the team"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-184",
+      "category": "safe_parent_coordination",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you home alone? i wanted to make sure an adult was there before i drop off the supplies"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-185",
+      "category": "safe_teacher_student",
+      "messages": [
+        {
+          "role": "other",
+          "text": "send me a pic of your science project so i can show the class tomorrow"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-186",
+      "category": "safe_peer_planning",
+      "messages": [
+        {
+          "role": "other",
+          "text": "whats your address? we need it for the birthday party invitations"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-187",
+      "category": "safe_family_surprise",
+      "messages": [
+        {
+          "role": "other",
+          "text": "dont tell your mom about the surprise party we are planning for her"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-188",
+      "category": "safe_teacher_feedback",
+      "messages": [
+        {
+          "role": "other",
+          "text": "you are so mature for your age your essay showed real depth of thought"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-189",
+      "category": "safe_peer_social",
+      "messages": [
+        {
+          "role": "other",
+          "text": "add me on snap so we can share memes from class"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-190",
+      "category": "safe_peer_social",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you have instagram? the whole study group is on there"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-191",
+      "category": "safe_peer_academic",
+      "messages": [
+        {
+          "role": "other",
+          "text": "lets meet at the library after school to work on the group project"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-192",
+      "category": "safe_sports_coaching",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i can pick you up for practice if your parents cant drive you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-193",
+      "category": "safe_peer_social",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what are you wearing to the dance? i dont know what to wear"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-194",
+      "category": "safe_peer_friendship",
+      "messages": [
+        {
+          "role": "other",
+          "text": "keep this between us i got you a gift for helping me study"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-195",
+      "category": "safe_peer_interest",
+      "messages": [
+        {
+          "role": "other",
+          "text": "show me what you drew in art class today i bet its amazing"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-196",
+      "category": "safe_school_project",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how old is your dog? we are doing a class project about pets"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-197",
+      "category": "safe_peer_academic",
+      "messages": [
+        {
+          "role": "other",
+          "text": "can we meet up this weekend to practice for the spelling bee"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-198",
+      "category": "safe_peer_social",
+      "messages": [
+        {
+          "role": "other",
+          "text": "your parents wouldnt mind if you stayed for dinner right"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-199",
+      "category": "safe_parent_concern",
+      "messages": [
+        {
+          "role": "other",
+          "text": "text me when you get home so i know you got there safe"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-200",
+      "category": "safe_peer_academic",
+      "messages": [
+        {
+          "role": "other",
+          "text": "come over to my house we can work on the poster together"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-201",
+      "category": "safe_sports_coaching",
+      "messages": [
+        {
+          "role": "other",
+          "text": "youre so special to this team your leadership really shows"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-202",
+      "category": "safe_peer_coordination",
+      "messages": [
+        {
+          "role": "other",
+          "text": "delete the old group chat and join the new one we made for the project"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-203",
+      "category": "safe_tutoring",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i really care about how you do on this test lets review together"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-204",
+      "category": "safe_sports_coaching",
+      "messages": [
+        {
+          "role": "other",
+          "text": "ill buy you ice cream after the game if we win great job today"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-205",
+      "category": "safe_teacher_parent",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are your parents home? i need to talk to them about the field trip"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-206",
+      "category": "safe_sports_team",
+      "messages": [
+        {
+          "role": "other",
+          "text": "give me your phone number so i can add you to the team group text"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-207",
+      "category": "safe_youth_organization",
+      "messages": [
+        {
+          "role": "other",
+          "text": "do you have whatsapp? thats what our scout troop uses to communicate"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-208",
+      "category": "safe_school_remote",
+      "messages": [
+        {
+          "role": "other",
+          "text": "turn on your camera for the video call so we can do the presentation"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-209",
+      "category": "safe_peer_friendship",
+      "messages": [
+        {
+          "role": "other",
+          "text": "you can trust me with your secret i wont tell anyone you like that band"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-210",
+      "category": "safe_peer_surprise",
+      "messages": [
+        {
+          "role": "other",
+          "text": "nobody needs to know about the surprise we are planning"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-211",
+      "category": "safe_teacher_encouragement",
+      "messages": [
+        {
+          "role": "other",
+          "text": "i understand you better than your other teachers you have real talent"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-212",
+      "category": "safe_medical",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how old are you now? i need to update the patient records"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-213",
+      "category": "safe_school_admin",
+      "messages": [
+        {
+          "role": "other",
+          "text": "whats your address? we need to ship the textbooks to your home"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-214",
+      "category": "safe_peer_academic",
+      "messages": [
+        {
+          "role": "other",
+          "text": "can you send me a photo of the worksheet? i lost mine"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-215",
+      "category": "safe_parent_safety",
+      "messages": [
+        {
+          "role": "other",
+          "text": "are you alone at home? make sure to lock the doors until we get back"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-216",
+      "category": "safe_peer_sports",
+      "messages": [
+        {
+          "role": "other",
+          "text": "lets meet at the park courts saturday morning to practice free throws"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-217",
+      "category": "safe_peer_curiosity",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what school do you go to? my cousin might go there too"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-218",
+      "category": "safe_customer_service",
+      "messages": [
+        {
+          "role": "other",
+          "text": "hi how can i help you today? whats your name and age for our records"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-219",
+      "category": "safe_school_transport",
+      "messages": [
+        {
+          "role": "other",
+          "text": "where do you live? we are seeing if the bus route covers your area"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-220",
+      "category": "safe_peer_compliment",
+      "messages": [
+        {
+          "role": "other",
+          "text": "you seem really cool for a 7th grader most kids your age are boring"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-221",
+      "category": "safe_sports_carpool",
+      "messages": [
+        {
+          "role": "other",
+          "text": "ill drive you to the tournament since your family only has one car"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-222",
+      "category": "safe_tutoring",
+      "messages": [
+        {
+          "role": "other",
+          "text": "show me your test so we can go over the questions you got wrong"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-223",
+      "category": "safe_peer_hangout",
+      "messages": [
+        {
+          "role": "other",
+          "text": "come to my place after school mom is making pizza for everyone"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-224",
+      "category": "safe_teacher_opportunity",
+      "messages": [
+        {
+          "role": "other",
+          "text": "dont tell the other kids about the extra credit opportunity its just for you"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-225",
+      "category": "safe_pe_instruction",
+      "messages": [
+        {
+          "role": "other",
+          "text": "take off your jacket and get ready for gym class"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-226",
+      "category": "safe_school_yearbook",
+      "messages": [
+        {
+          "role": "other",
+          "text": "send a picture of yourself for the yearbook we need an updated photo"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-227",
+      "category": "safe_event_registration",
+      "messages": [
+        {
+          "role": "other",
+          "text": "how old are you? we need it for the t-shirt sizes for the fun run"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-228",
+      "category": "safe_peer_school_event",
+      "messages": [
+        {
+          "role": "other",
+          "text": "what are you wearing for crazy hair day tomorrow? i cant decide"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-229",
+      "category": "safe_peer_academic",
+      "messages": [
+        {
+          "role": "other",
+          "text": "lets chat on discord about the homework assignment"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-230",
+      "category": "safe_counselor_support",
+      "messages": [
+        {
+          "role": "other",
+          "text": "im here if you need to talk about anything you seemed sad today"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-231",
+      "category": "safe_counselor_support",
+      "messages": [
+        {
+          "role": "other",
+          "text": "you can always come to me if something is bothering you at school"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-232",
+      "category": "safe_family_coordination",
+      "messages": [
+        {
+          "role": "other",
+          "text": "your mom asked me to pick you up from school today she is running late"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "groom-233",
+      "category": "safe_teacher_encouragement",
+      "messages": [
+        {
+          "role": "other",
+          "text": "just between us i think you deserve the lead role in the play"
+        }
+      ],
+      "expected": {
+        "is_grooming": false,
+        "stages": [],
+        "min_severity": 0.0
+      }
+    }
+  ]
+}

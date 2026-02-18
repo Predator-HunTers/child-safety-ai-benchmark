@@ -1,0 +1,205 @@
+{
+  "suite": "health-risk",
+  "version": "1.0",
+  "description": "Health risk detection: eating disorders, self-harm, suicide ideation",
+  "tests": [
+    {
+      "id": "health-001",
+      "category": "eating_disorder",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i havent eaten in 3 days and i feel great"
+        },
+        {
+          "role": "other",
+          "text": "thats amazing keep going you look so thin"
+        }
+      ],
+      "expected": {
+        "is_health_risk": true,
+        "risk_type": "eating_disorder",
+        "min_severity": 0.7
+      }
+    },
+    {
+      "id": "health-002",
+      "category": "self_harm",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i cut myself again last night"
+        },
+        {
+          "role": "other",
+          "text": "does it help you feel better"
+        }
+      ],
+      "expected": {
+        "is_health_risk": true,
+        "risk_type": "self_harm",
+        "min_severity": 0.9
+      }
+    },
+    {
+      "id": "health-003",
+      "category": "suicide_ideation",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i dont want to be here anymore"
+        },
+        {
+          "role": "other",
+          "text": "what do you mean"
+        },
+        {
+          "role": "self",
+          "text": "like i dont want to exist"
+        }
+      ],
+      "expected": {
+        "is_health_risk": true,
+        "risk_type": "suicide_ideation",
+        "min_severity": 0.9
+      }
+    },
+    {
+      "id": "health-004",
+      "category": "eating_disorder",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i purged after dinner again"
+        },
+        {
+          "role": "other",
+          "text": "you need to stop doing that"
+        }
+      ],
+      "expected": {
+        "is_health_risk": true,
+        "risk_type": "eating_disorder",
+        "min_severity": 0.8
+      }
+    },
+    {
+      "id": "health-005",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i skipped lunch because i wasnt hungry"
+        },
+        {
+          "role": "other",
+          "text": "make sure you eat something later"
+        }
+      ],
+      "expected": {
+        "is_health_risk": false,
+        "risk_type": "none",
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "health-006",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "self",
+          "text": "im starting a new diet my doctor recommended"
+        },
+        {
+          "role": "other",
+          "text": "thats great whats it about"
+        }
+      ],
+      "expected": {
+        "is_health_risk": false,
+        "risk_type": "none",
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "health-007",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i feel so sad about my dog dying"
+        },
+        {
+          "role": "other",
+          "text": "im so sorry thats really hard"
+        }
+      ],
+      "expected": {
+        "is_health_risk": false,
+        "risk_type": "none",
+        "min_severity": 0.0
+      }
+    },
+    {
+      "id": "health-008",
+      "category": "substance_risk",
+      "messages": [
+        {
+          "role": "other",
+          "text": "try these pills they make you feel amazing"
+        },
+        {
+          "role": "self",
+          "text": "idk my parents would kill me"
+        },
+        {
+          "role": "other",
+          "text": "they wont find out just take one"
+        }
+      ],
+      "expected": {
+        "is_health_risk": true,
+        "risk_type": "substance",
+        "min_severity": 0.7
+      }
+    },
+    {
+      "id": "health-009",
+      "category": "self_harm",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i keep hitting my head against the wall when im stressed"
+        },
+        {
+          "role": "other",
+          "text": "you should talk to someone about that"
+        }
+      ],
+      "expected": {
+        "is_health_risk": true,
+        "risk_type": "self_harm",
+        "min_severity": 0.7
+      }
+    },
+    {
+      "id": "health-010",
+      "category": "safe",
+      "messages": [
+        {
+          "role": "self",
+          "text": "i went for a run this morning and feel great"
+        },
+        {
+          "role": "other",
+          "text": "nice how far did you go"
+        }
+      ],
+      "expected": {
+        "is_health_risk": false,
+        "risk_type": "none",
+        "min_severity": 0.0
+      }
+    }
+  ]
+}

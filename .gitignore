@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+bun.lock
+
+# Build
+.next/
+dist/
+*.tsbuildinfo
+
+# Environment
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Benchmark output (regenerated per run)
+output/*.json
+!output/.gitkeep
+
+# Model weights
+*.pkl
+*.onnx
+*.tflite
+*.pt
+*.bin
+*.safetensors

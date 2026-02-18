@@ -1,0 +1,22 @@
+{
+  "name": "child-safety-benchmark",
+  "version": "1.0.0",
+  "description": "Predator Hunters Child Safety AI Benchmark - evaluate models on grooming detection, NSFW filtering, and child safety threat identification",
+  "private": false,
+  "type": "module",
+  "license": "MIT",
+  "scripts": {
+    "bench": "bun run cli/index.ts",
+    "generate-real": "bun run cli/generate-real-cases.ts",
+    "dev": "cd visualizer && bun run dev",
+    "build": "cd visualizer && bun run build"
+  },
+  "dependencies": {
+    "commander": "^12.1.0",
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.0",
+    "typescript": "^5.7.0"
+  }
+}
