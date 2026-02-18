@@ -1,5 +1,5 @@
 {
-  "name": "child-safety-benchmark",
+  "name": "child-safety-ai-benchmark",
   "compatibility_date": "2026-02-18",
   "assets": {
     "directory": "./visualizer/out"
