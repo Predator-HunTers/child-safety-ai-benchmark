@@ -56,10 +56,20 @@ function RunDetail() {
     );
   }
 
+  const [expandedPreds, setExpandedPreds] = useState<Set<string>>(new Set());
+  const toggleExpand = (id: string) =>
+    setExpandedPreds((prev) => {
+      const next = new Set(prev);
+      next.has(id) ? next.delete(id) : next.add(id);
+      return next;
+    });
+
   const m = run.metrics;
   const correct = run.predictions.filter((p) => p.expected === p.predicted);
   const incorrect = run.predictions.filter((p) => p.expected !== p.predicted);
   const failureReason = detectFailureReason(run);
+
+  const PREVIEW_LEN = 200;
 
   return (
     <div className="space-y-8">
@@ -258,38 +268,69 @@ function RunDetail() {
             Why the model got these wrong — review stages and explanations to understand failure modes.
           </p>
           <div className="space-y-3">
-            {incorrect.slice(0, 20).map((p) => (
-              <div key={p.test_id} className="rounded-lg border border-destructive/20 bg-destructive/5 p-4">
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-sm">{p.test_id}</span>
-                  <span className="text-xs text-muted-foreground">{p.category}</span>
-                </div>
-                <div className="mt-2 grid grid-cols-2 gap-4 text-sm">
-                  <div>
-                    <span className="font-medium">Expected:</span>{" "}
-                    {p.expected ? "GROOMING" : "SAFE"}
-                    {p.stages_expected.length > 0 && (
-                      <span className="ml-1 text-muted-foreground">[{p.stages_expected.join(", ")}]</span>
-                    )}
+            {incorrect.slice(0, 20).map((p) => {
+              const expanded = expandedPreds.has(p.test_id);
+              const isLong = (p.explanation?.length ?? 0) > PREVIEW_LEN;
+              return (
+                <div key={p.test_id} className="rounded-lg border border-destructive/20 bg-destructive/5 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-sm">{p.test_id}</span>
+                    <span className="text-xs text-muted-foreground">{p.category}</span>
                   </div>
-                  <div>
-                    <span className="font-medium">Predicted:</span>{" "}
-                    {p.predicted ? "GROOMING" : "SAFE"}
-                    {p.stages_predicted.length > 0 && (
-                      <span className="ml-1 text-muted-foreground">[{p.stages_predicted.join(", ")}]</span>
-                    )}
+                  <div className="mt-2 grid grid-cols-2 gap-4 text-sm">
+                    <div>
+                      <span className="font-medium">Expected:</span>{" "}
+                      <span className={p.expected ? "text-red-700 font-semibold" : "text-green-700 font-semibold"}>
+                        {p.expected ? "GROOMING" : "SAFE"}
+                      </span>
+                      {p.stages_expected.length > 0 && (
+                        <span className="ml-1 text-muted-foreground">[{p.stages_expected.join(", ")}]</span>
+                      )}
+                    </div>
+                    <div>
+                      <span className="font-medium">Predicted:</span>{" "}
+                      <span className={p.predicted ? "text-red-700 font-semibold" : "text-green-700 font-semibold"}>
+                        {p.predicted ? "GROOMING" : "SAFE"}
+                      </span>
+                      {p.stages_predicted.length > 0 && (
+                        <span className="ml-1 text-muted-foreground">[{p.stages_predicted.join(", ")}]</span>
+                      )}
+                    </div>
                   </div>
-                </div>
-                {p.explanation && (
-                  <div className="mt-2 rounded bg-muted p-2 text-sm">
-                    <span className="font-medium">Why: </span>{p.explanation}
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    Score: {p.score.toFixed(3)} | Latency: {p.latency_ms.toFixed(0)}ms
                   </div>
-                )}
-                <div className="mt-1 text-xs text-muted-foreground">
-                  Score: {p.score.toFixed(3)} | Latency: {p.latency_ms.toFixed(0)}ms
+                  {p.explanation && (
+                    <div className="mt-2 rounded bg-muted p-3 text-sm leading-relaxed">
+                      <span className="font-medium">Model reasoning: </span>
+                      {isLong && !expanded ? (
+                        <>
+                          {p.explanation.slice(0, PREVIEW_LEN)}&hellip;{" "}
+                          <button
+                            onClick={() => toggleExpand(p.test_id)}
+                            className="font-medium text-primary hover:underline"
+                          >
+                            Show full reasoning ▼
+                          </button>
+                        </>
+                      ) : (
+                        <>
+                          <span className="whitespace-pre-wrap">{p.explanation}</span>
+                          {isLong && (
+                            <button
+                              onClick={() => toggleExpand(p.test_id)}
+                              className="ml-2 font-medium text-primary hover:underline"
+                            >
+                              Show less ▲
+                            </button>
+                          )}
+                        </>
+                      )}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       )}
@@ -300,27 +341,55 @@ function RunDetail() {
           Correct Predictions ({correct.length})
         </h3>
         <div className="space-y-2">
-          {correct.slice(0, 10).map((p) => (
-            <div key={p.test_id} className="rounded-lg border border-green-200 bg-green-50 p-3">
-              <div className="flex items-center justify-between">
-                <span className="font-mono text-sm">{p.test_id}</span>
-                <div className="flex gap-2">
-                  <span className="text-xs text-muted-foreground">{p.category}</span>
-                  <span className="text-xs font-medium text-green-700">
-                    {p.predicted ? "GROOMING" : "SAFE"}
-                  </span>
+          {correct.slice(0, 10).map((p) => {
+            const expanded = expandedPreds.has(p.test_id);
+            const isLong = (p.explanation?.length ?? 0) > PREVIEW_LEN;
+            return (
+              <div key={p.test_id} className="rounded-lg border border-green-200 bg-green-50 p-3">
+                <div className="flex items-center justify-between">
+                  <span className="font-mono text-sm">{p.test_id}</span>
+                  <div className="flex gap-2">
+                    <span className="text-xs text-muted-foreground">{p.category}</span>
+                    <span className="text-xs font-medium text-green-700">
+                      {p.predicted ? "GROOMING" : "SAFE"}
+                    </span>
+                  </div>
                 </div>
+                {p.stages_predicted.length > 0 && (
+                  <div className="mt-1 text-xs text-muted-foreground">
+                    Stages: {p.stages_predicted.join(", ")}
+                  </div>
+                )}
+                {p.explanation && (
+                  <div className="mt-1 text-sm text-muted-foreground">
+                    {isLong && !expanded ? (
+                      <>
+                        {p.explanation.slice(0, PREVIEW_LEN)}&hellip;{" "}
+                        <button
+                          onClick={() => toggleExpand(p.test_id)}
+                          className="font-medium text-primary hover:underline"
+                        >
+                          Show full reasoning ▼
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <span className="whitespace-pre-wrap">{p.explanation}</span>
+                        {isLong && (
+                          <button
+                            onClick={() => toggleExpand(p.test_id)}
+                            className="ml-2 font-medium text-primary hover:underline"
+                          >
+                            Show less ▲
+                          </button>
+                        )}
+                      </>
+                    )}
+                  </div>
+                )}
               </div>
-              {p.explanation && (
-                <div className="mt-1 text-sm text-muted-foreground">{p.explanation}</div>
-              )}
-              {p.stages_predicted.length > 0 && (
-                <div className="mt-1 text-xs text-muted-foreground">
-                  Stages: {p.stages_predicted.join(", ")}
-                </div>
-              )}
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>
