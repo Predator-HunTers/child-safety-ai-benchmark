@@ -2,6 +2,7 @@
 
 import { type BenchmarkRun, detectFailureReason } from "@/lib/types";
 import { useState } from "react";
+import { ErrorBadge } from "@/components/ErrorBadge";
 
 type SortKey = "f1" | "precision" | "recall" | "auc" | "fpr" | "avg_latency_ms";
 
@@ -95,21 +96,30 @@ export function Leaderboard({
                   {i + 1}
                 </td>
                 <td className="px-4 py-3 font-medium">
-                  {run.model}
+                  <a
+                    href={`/results?id=${run.id}`}
+                    className="hover:underline"
+                  >
+                    {run.model}
+                  </a>
                   {(() => {
                     const reason = detectFailureReason(run);
                     if (reason.type === "refused") {
                       return (
-                        <span className="ml-2 inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800" title={reason.description}>
-                          Refused
-                        </span>
+                        <ErrorBadge
+                          type="refused"
+                          description={reason.description}
+                          className="ml-2"
+                        />
                       );
                     }
                     if (reason.type === "all_errors" || reason.type === "api_error") {
                       return (
-                        <span className="ml-2 inline-flex items-center rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-800" title={reason.description}>
-                          Error
-                        </span>
+                        <ErrorBadge
+                          type="error"
+                          description={reason.description}
+                          className="ml-2"
+                        />
                       );
                     }
                     return null;

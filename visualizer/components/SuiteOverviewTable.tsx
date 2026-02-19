@@ -2,6 +2,7 @@
 
 import { type BenchmarkRun, detectFailureReason, type FailureReason } from "@/lib/types";
 import { useState } from "react";
+import { ErrorBadge } from "@/components/ErrorBadge";
 
 interface ModelSuiteStats {
   model: string;
@@ -11,6 +12,7 @@ interface ModelSuiteStats {
   avgRecall: number;
   perSuite: Record<string, number>; // suite -> best F1
   perSuiteReason: Record<string, FailureReason>; // suite -> failure reason
+  perSuiteRunId: Record<string, string>; // suite -> run ID for linking
 }
 
 function f1Badge(f1: number) {
@@ -63,11 +65,13 @@ export function SuiteOverviewTable({
         avgRecall: 0,
         perSuite: {},
         perSuiteReason: {},
+        perSuiteRunId: {},
       });
     }
     const stats = modelMap.get(model)!;
     stats.perSuite[run.suite] = run.metrics.f1;
     stats.perSuiteReason[run.suite] = detectFailureReason(run);
+    stats.perSuiteRunId[run.suite] = run.id;
   }
 
   // Compute averages
@@ -194,25 +198,46 @@ export function SuiteOverviewTable({
                 </td>
                 {suites.sort().map((suite) => {
                   const reason = row.perSuiteReason[suite];
+                  const runId = row.perSuiteRunId[suite];
                   return (
                     <td key={suite} className="px-3 py-3 text-right">
                       {row.perSuite[suite] != null ? (
                         reason?.type === "refused" ? (
-                          <span
-                            className="inline-block rounded bg-amber-100 px-1.5 py-0.5 text-xs font-medium text-amber-800"
-                            title={reason.description}
-                          >
-                            Refused
+                          <span className="inline-flex items-center gap-1">
+                            <ErrorBadge
+                              type="refused"
+                              description={reason.description}
+                            />
+                            {runId && (
+                              <a
+                                href={`/results?id=${runId}`}
+                                className="text-xs text-muted-foreground hover:text-primary"
+                                title="View result"
+                              >
+                                ↗
+                              </a>
+                            )}
                           </span>
                         ) : reason?.type === "all_errors" || reason?.type === "api_error" ? (
-                          <span
-                            className="inline-block rounded bg-red-100 px-1.5 py-0.5 text-xs font-medium text-red-800"
-                            title={reason.description}
-                          >
-                            Error
+                          <span className="inline-flex items-center gap-1">
+                            <ErrorBadge
+                              type="error"
+                              description={reason.description}
+                            />
+                            {runId && (
+                              <a
+                                href={`/results?id=${runId}`}
+                                className="text-xs text-muted-foreground hover:text-primary"
+                                title="View result"
+                              >
+                                ↗
+                              </a>
+                            )}
                           </span>
                         ) : (
-                          f1Badge(row.perSuite[suite])
+                          <a href={`/results?id=${runId}`}>
+                            {f1Badge(row.perSuite[suite])}
+                          </a>
                         )
                       ) : (
                         <span className="text-xs text-muted-foreground">---</span>
