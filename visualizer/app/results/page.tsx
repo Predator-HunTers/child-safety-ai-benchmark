@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import { type BenchmarkRun, detectFailureReason } from "@/lib/types";
+import { recomputeRun } from "@/lib/scoring";
 import { MetricsCard } from "@/components/MetricsCard";
 import { ConfusionMatrix } from "@/components/ConfusionMatrix";
 import { BarChart } from "@/components/BarChart";
@@ -32,6 +33,8 @@ function RunDetail() {
   // All hooks must be declared before any conditional returns
   const [expandedPreds, setExpandedPreds] = useState<Set<string>>(new Set());
   const [showPrompt, setShowPrompt] = useState(false);
+  // Map of test_id → overridden expected value (only for edited cases)
+  const [editedExpected, setEditedExpected] = useState<Record<string, boolean>>({});
 
   const toggleExpand = (id: string) =>
     setExpandedPreds((prev) => {
@@ -39,6 +42,38 @@ function RunDetail() {
       next.has(id) ? next.delete(id) : next.add(id);
       return next;
     });
+
+  const toggleExpected = (testId: string, currentEffectiveExpected: boolean) => {
+    setEditedExpected((prev) => {
+      // If already overridden, reset to original (remove override)
+      if (testId in prev) {
+        const next = { ...prev };
+        delete next[testId];
+        return next;
+      }
+      // Otherwise flip from current effective value
+      return { ...prev, [testId]: !currentEffectiveExpected };
+    });
+  };
+
+  const downloadCorrected = () => {
+    if (!run) return;
+    const r = recomputeRun(run, editedExpected);
+    const corrected: BenchmarkRun = {
+      ...run,
+      predictions: r.predictions,
+      metrics: r.metrics,
+      ...(r.stage_summary !== undefined && { stage_summary: r.stage_summary }),
+      ...(r.source_breakdown !== undefined && { source_breakdown: r.source_breakdown }),
+    };
+    const blob = new Blob([JSON.stringify(corrected, null, 2)], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `${run.id}-corrected.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
 
   useEffect(() => {
     if (!runId) {
@@ -81,10 +116,12 @@ function RunDetail() {
     );
   }
 
-  const m = run.metrics;
-  const correct = run.predictions.filter((p) => p.expected === p.predicted);
-  const incorrect = run.predictions.filter((p) => p.expected !== p.predicted);
-  const failureReason = detectFailureReason(run);
+  const editCount = Object.keys(editedExpected).length;
+  const recomputed = recomputeRun(run, editedExpected);
+  const { predictions: effectivePreds, metrics: m, stage_summary, source_breakdown } = recomputed;
+  const correct = effectivePreds.filter((p) => p.expected === p.predicted);
+  const incorrect = effectivePreds.filter((p) => p.expected !== p.predicted);
+  const failureReason = detectFailureReason({ ...run, metrics: m, predictions: effectivePreds });
 
   const PREVIEW_LEN = 200;
 
@@ -124,6 +161,29 @@ function RunDetail() {
           )}
         </div>
       </div>
+
+      {/* Edit mode banner */}
+      {editCount > 0 && (
+        <div className="flex items-center justify-between rounded-lg border border-blue-300 bg-blue-50 px-5 py-3">
+          <p className="text-sm font-medium text-blue-900">
+            {editCount} expected label{editCount > 1 ? "s" : ""} edited — metrics are recalculated.
+          </p>
+          <div className="flex gap-3">
+            <button
+              onClick={() => setEditedExpected({})}
+              className="text-sm font-medium text-blue-700 hover:underline"
+            >
+              Reset all
+            </button>
+            <button
+              onClick={downloadCorrected}
+              className="rounded bg-blue-700 px-3 py-1 text-sm font-medium text-white hover:bg-blue-800"
+            >
+              Download corrected JSON
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Failure reason banner */}
       {failureReason.type === "refused" && (
@@ -178,14 +238,14 @@ function RunDetail() {
       </div>
 
       {/* Real vs Synthetic source breakdown */}
-      {run.source_breakdown && (
+      {source_breakdown && (
         <div>
           <h3 className="mb-4 text-lg font-semibold">Real vs Synthetic Results</h3>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {run.source_breakdown.real.count > 0 && (
+            {source_breakdown.real.count > 0 && (
               <div className="rounded-lg border bg-card p-6">
                 <h4 className="mb-3 font-semibold text-orange-600">
-                  Real Chat Logs ({run.source_breakdown.real.count} cases)
+                  Real Chat Logs ({source_breakdown.real.count} cases)
                 </h4>
                 <p className="mb-4 text-xs text-muted-foreground">
                   From convicted predator conversations (anonymized)
@@ -193,27 +253,27 @@ function RunDetail() {
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
                     <span className="text-muted-foreground">Overall Score</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.real.f1 * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.real.f1 * 100).toFixed(1)}%</div>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Threats Caught</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.real.recall * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.real.recall * 100).toFixed(1)}%</div>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Correct Alerts</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.real.precision * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.real.precision * 100).toFixed(1)}%</div>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Accuracy</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.real.accuracy * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.real.accuracy * 100).toFixed(1)}%</div>
                   </div>
                 </div>
               </div>
             )}
-            {run.source_breakdown.synthetic.count > 0 && (
+            {source_breakdown.synthetic.count > 0 && (
               <div className="rounded-lg border bg-card p-6">
                 <h4 className="mb-3 font-semibold text-blue-600">
-                  Synthetic Tests ({run.source_breakdown.synthetic.count} cases)
+                  Synthetic Tests ({source_breakdown.synthetic.count} cases)
                 </h4>
                 <p className="mb-4 text-xs text-muted-foreground">
                   Hand-crafted test scenarios
@@ -221,19 +281,19 @@ function RunDetail() {
                 <div className="grid grid-cols-2 gap-3 text-sm">
                   <div>
                     <span className="text-muted-foreground">Overall Score</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.synthetic.f1 * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.synthetic.f1 * 100).toFixed(1)}%</div>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Threats Caught</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.synthetic.recall * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.synthetic.recall * 100).toFixed(1)}%</div>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Correct Alerts</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.synthetic.precision * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.synthetic.precision * 100).toFixed(1)}%</div>
                   </div>
                   <div>
                     <span className="text-muted-foreground">Accuracy</span>
-                    <div className="text-xl font-bold">{(run.source_breakdown.synthetic.accuracy * 100).toFixed(1)}%</div>
+                    <div className="text-xl font-bold">{(source_breakdown.synthetic.accuracy * 100).toFixed(1)}%</div>
                   </div>
                 </div>
               </div>
@@ -249,14 +309,14 @@ function RunDetail() {
       </div>
 
       {/* Grooming Stages Detected */}
-      {run.stage_summary && Object.keys(run.stage_summary).length > 0 && (
+      {stage_summary && Object.keys(stage_summary).length > 0 && (
         <div className="rounded-lg border bg-card p-6">
           <h3 className="mb-4 font-semibold">Grooming Stages Detected</h3>
           <p className="mb-4 text-sm text-muted-foreground">
             How well the model identifies each grooming stage across all test cases.
           </p>
           <div className="space-y-3">
-            {Object.entries(run.stage_summary)
+            {Object.entries(stage_summary)
               .sort((a, b) => b[1].expected - a[1].expected)
               .map(([stage, counts]) => {
                 const pct = counts.expected > 0
@@ -296,10 +356,12 @@ function RunDetail() {
           </h3>
           <p className="mb-2 text-sm text-muted-foreground">
             Why the model got these wrong — review stages and explanations to understand failure modes.
+            Click <strong>flip expected</strong> on any case to correct the ground truth label and rescore.
           </p>
           <div className="space-y-3">
             {incorrect.slice(0, 20).map((p) => {
               const expanded = expandedPreds.has(p.test_id);
+              const isEdited = p.test_id in editedExpected;
               const modelOutput = JSON.stringify(
                 {
                   is_grooming: p.predicted,
@@ -317,14 +379,21 @@ function RunDetail() {
                     <span className="text-xs text-muted-foreground">{p.category}</span>
                   </div>
                   <div className="mt-2 grid grid-cols-2 gap-4 text-sm">
-                    <div>
+                    <div className="flex items-center gap-2">
                       <span className="font-medium">Expected:</span>{" "}
                       <span className={p.expected ? "text-red-700 font-semibold" : "text-green-700 font-semibold"}>
                         {p.expected ? "GROOMING" : "SAFE"}
                       </span>
                       {p.stages_expected.length > 0 && (
-                        <span className="ml-1 text-muted-foreground">[{p.stages_expected.join(", ")}]</span>
+                        <span className="text-muted-foreground">[{p.stages_expected.join(", ")}]</span>
                       )}
+                      <button
+                        onClick={() => toggleExpected(p.test_id, p.expected)}
+                        className={`rounded px-1.5 py-0.5 text-xs font-medium ${isEdited ? "bg-blue-100 text-blue-700 hover:bg-blue-200" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
+                        title={isEdited ? "Undo edit (restore original)" : "Flip expected label"}
+                      >
+                        {isEdited ? "↩ reset" : "flip expected"}
+                      </button>
                     </div>
                     <div>
                       <span className="font-medium">Predicted:</span>{" "}
@@ -383,6 +452,7 @@ function RunDetail() {
         <div className="space-y-2">
           {correct.slice(0, 10).map((p) => {
             const expanded = expandedPreds.has(p.test_id);
+            const isEdited = p.test_id in editedExpected;
             const modelOutput = JSON.stringify(
               {
                 is_grooming: p.predicted,
@@ -397,11 +467,18 @@ function RunDetail() {
               <div key={p.test_id} className="rounded-lg border border-green-200 bg-green-50 p-3">
                 <div className="flex items-center justify-between">
                   <span className="font-mono text-sm">{p.test_id}</span>
-                  <div className="flex gap-2">
+                  <div className="flex items-center gap-2">
                     <span className="text-xs text-muted-foreground">{p.category}</span>
                     <span className="text-xs font-medium text-green-700">
                       {p.predicted ? "GROOMING" : "SAFE"}
                     </span>
+                    <button
+                      onClick={() => toggleExpected(p.test_id, p.expected)}
+                      className={`rounded px-1.5 py-0.5 text-xs font-medium ${isEdited ? "bg-blue-100 text-blue-700 hover:bg-blue-200" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
+                      title={isEdited ? "Undo edit (restore original)" : "Flip expected label"}
+                    >
+                      {isEdited ? "↩ reset" : "flip expected"}
+                    </button>
                   </div>
                 </div>
                 {p.stages_predicted.length > 0 && (
